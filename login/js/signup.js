@@ -6,6 +6,7 @@ $(document).ready(function(){
     var password = $("#password1").val();
     var password2 = $("#password2").val();
     var email = $("#email").val();
+    var usertype = $("#usertype").val();
 
     if((username == "") || (password == "") || (email == "")) {
       $("#message").html("<div class=\"alert alert-danger alert-dismissable\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Please enter a username and a password</div>");
@@ -14,7 +15,7 @@ $(document).ready(function(){
       $.ajax({
         type: "POST",
         url: "createuser.php",
-        data: "newuser="+username+"&password1="+password+"&password2="+password2+"&email="+email,
+        data: "newuser="+username+"&password1="+password+"&password2="+password2+"&email="+email+"&usertype="+usertype,
         success: function(html){
 
 			var text = $(html).text();
