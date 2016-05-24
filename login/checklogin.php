@@ -19,8 +19,12 @@ $response = $login->checkLogin($tbl_name, $myusername, $mypassword);
 
 	if ($response == 'true'){
 		echo "true";
+		$now_user = $login->getNowUser($myusername);
+
 		$_SESSION['username'] = $myusername;
 		$_SESSION['password'] = $mypassword;
+		$_SESSION['usertype'] = $now_user["usertype"];
+		
 	}
 	else {
 

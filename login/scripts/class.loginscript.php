@@ -84,6 +84,18 @@ class loginForm extends dbConn {
 		return $success;
 
 	}
+
+	// 获取当前用户
+	public function getNowUser($myusername) {
+
+		include 'config.php';
+		$con = new mysqli($host, $username, $password, $db_name);
+
+    	$sql = "select * from users where username='$myusername'";
+    	$ans = $con->query($sql);	
+    	$now = $ans->fetch_assoc();
+    	return $now;
+    }
 };
 
 class mailSender {

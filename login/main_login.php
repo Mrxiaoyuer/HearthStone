@@ -31,7 +31,7 @@
         <button name="Submit" id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         <div id="message"></div>
       </form>
-      <a href = "../login/signup.php" >Sign Up</a>
+      <a href = "../login/signup.php"  class="btn btn-lg btn-block">Sign Up</a>
 
     </div> <!-- /container -->
 

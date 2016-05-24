@@ -39,7 +39,9 @@
                 <div id="message"></div>
                 <br><br>
                 <button name="Submit" id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+                <a href = "../login/main_login.php" class="btn btn-lg btn-block">Sign In</a>
             </form>
+            <br>
 
         </div> <!-- /container -->  
 
