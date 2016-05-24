@@ -30,7 +30,7 @@
     if(x>0){
       document.getElementById("sp").innerHTML=x;
     }else{
-      location.href='test.php';
+      location.href='Patient.php';
     }
   }
 </script>
@@ -46,7 +46,7 @@
 			echo mysqli_connect_error();
 	}
 
-  $bns = $con->query("update Bed set Is_used = 1 where Bed_No=".$_GET['id']."");
+  $bns = $con->query("update Patient set Assigned = -1 where Pat_ID=".$_GET['id']."");
 
   ?>
 </div>

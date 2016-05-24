@@ -21,14 +21,22 @@
 
 	    while ($now = $ans->fetch_assoc()){
 	        echo "Pat_ID : " . $now["Pat_ID"] . "<br>". "<br>";
-					echo "Pat_name : " . $now["Pat_name"] . "<br>". "<br>";
-					echo "Sex : " . $now["Sex"] . "<br>". "<br>";
-					echo "Bed_No : " . $now["Bed_No"] . "<br>". "<br>";
-					echo "Primary_doc : " . $now["Primary_doc"] . "<br>". "<br>";
-					$bns = $con->query("select content from Prescription where Pat_ID= $now[Primary_doc] and Doc_ID=$now[Pat_ID]")->fetch_object()->content;
-					echo "Prescription: " . $bns . "<br>" . "<br>";
-					echo "<a href='patient.php?id=$now[Pat_ID]' class='btn btn-info'>RePrescrip</a>" . "&nbsp";
-					echo "<a href='addsurgery.php?id=$now[Pat_ID]' class='btn btn-info'>ArrangeOper</a>";
+			echo "Pat_name : " . $now["Pat_name"] . "<br>". "<br>";
+			echo "Sex : " . $now["Sex"] . "<br>". "<br>";
+			echo "Bed_No : " . $now["Bed_No"] . "<br>". "<br>";
+			echo "Primary_doc : " . $now["Primary_doc"] . "<br>". "<br>";
+			$bns = $con->query("select content from Prescription where Pat_ID= $now[Primary_doc] and Doc_ID=$now[Pat_ID]")->fetch_object()->content;
+			echo "Prescription: " . $bns . "<br>" . "<br>";
+			echo "<a href='patient.php?id=$now[Pat_ID]' class='btn btn-info'>RePrescrip</a>" . "&nbsp";
+			echo "<a href='addsurgery.php?id=$now[Pat_ID]' class='btn btn-info'>ArrangeOper</a>";
+			if($now["Assigned"] == -1)
+				echo "<a href = '_SendAssignRoomReq.php?id=$now[Pat_ID]' class='btn btn-info'> Assign Room</a>";
+			elseif($now["Assigned"] != 0 && $now["Assigned"] != -1)
+			{
+				echo "<a href = '_SendRecycleRoomReq.php?id=$now[Pat_ID]' class='btn btn-info'>Recycle Room</a>";
+			}
+
+
 	    }
 	    ?>
 		</div>
