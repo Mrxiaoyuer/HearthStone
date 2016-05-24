@@ -21,41 +21,42 @@
 <body>
 
 <div id="container">
-	<br>
-	<h1 class="text-center">Arrange Operation Details</h1>
-	<br><br>
 	<?php
-		$data=$_POST;
-		//echo $data['OpTime'];
 		$con = new mysqli("57306aae8f8cf.bj.cdb.myqcloud.com:5651", "cdb_outerroot", "jiangli77", "HearthStone");
 		if(mysqli_connect_errno())
 		{
 				echo mysqli_connect_error();
 		}
-		$bns = $con->query("insert into Surgery (OpTime,Doctor_ID,Patient_ID,OpRoom_ID) values ($data[OpTime],$data[Doctor_ID],$data[Patient_ID],$data[OpRoom_ID])");
-		if(!$bns){
-			echo "<h1 class='text-center'>Arrange Failed...</h1>";
-			echo "<h1 class='text-center'>Please Try Again....</h1>";
-		}else{
-			echo "<h1 class='text-center'>Arrange Successfully...</h1>";
-		}
-	 ?>
-	 <script type="text/javascript">
-		 onload=function(){
-			 setInterval(go, 1000);
-		 };
-		 var x=2;
-		 function go(){
-			 x--;
-			 if(x>0){
-				 document.getElementById("sp").innerHTML=x;
-			 }else{
-				 <?php
-				 echo "location.href='patient.php?id=$data[Patient_ID]'";
-				 ?>
-			 }
-		 }
-	 </script>
+
+		$ans = $con->query("select * from Prescription where Pat_ID=".$_GET['id']."")->fetch_object();
+		//echo $ans->Pre_ID;
+		?>
+	<br>
+	<h1 class="text-center">Prescription Details</h1>
+	<br><br>
+	<form class="col-md-offset-2 col-md-8 jumbotron" action="prescription_success.php" method="post">
+	  <div class="form-group">
+	    <label>Pre_ID</label>
+			<input class="form-control" name="Pre_ID" value=<?php echo $ans->Pre_ID;?> readonly>
+	  </div>
+	  <div class="form-group">
+	    <label>Pat_ID</label>
+	    <input class="form-control" name="Pat_ID" value=<?php echo $ans->Pat_ID;?> readonly>
+	  </div>
+		<div class="form-group">
+			<label>Doc_ID</label>
+			<input class="form-control" name="Doc_ID" value=<?php echo $ans->Doc_ID;?> readonly>
+		</div>
+		<div class="form-group">
+			<label>Pre_date</label>
+			<input class="form-control" name="Pre_date" placeholder="Prescription_Date">
+		</div>
+		<div class="form-group">
+			<label>Content</label>
+			<input class="form-control" name="content" placeholder="Content">
+		</div>
+		<button type="submit" class="btn btn-info">Submit</button>
+	</form>
 </div>
 
 </body>

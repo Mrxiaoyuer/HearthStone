@@ -30,7 +30,7 @@
 	{
 			echo mysqli_connect_error();
 	}
-	//$ans = $con->query("select Patient_ID from Surgery where id=".$_GET['id']."")->fetch_object()->Patient_ID;
+	$ans = $con->query("select Patient_ID from Surgery where id=".$_GET['id']."")->fetch_object()->Patient_ID;
 	//echo $ans;
   $bns = $con->query("delete from Surgery where id=".$_GET['id']."");
 
@@ -47,7 +47,7 @@
 	      document.getElementById("sp").innerHTML=x;
 	    }else{
 				<?php
-	      echo "location.href='patient.php?id=".$_GET['id']."'";
+	      echo "location.href='patient.php?id=$ans'";
 				?>
 	    }
 	  }

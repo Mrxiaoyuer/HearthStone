@@ -43,7 +43,7 @@
 					echo "Primary_doc : " . $now["Primary_doc"] . "<br>". "<br>";
 					$bns = $con->query("select content from Prescription where Pat_ID= $now[Primary_doc] and Doc_ID=$now[Pat_ID]")->fetch_object()->content;
 					echo "Prescription: " . $bns . "<br>" . "<br>";
-					echo "<a href='patient.php?id=$now[Pat_ID]' class='btn btn-info'>RePrescrip</a>" . "&nbsp";
+					echo "<a href='Prescription.php?id=$now[Pat_ID]' class='btn btn-info'>RePrescrip</a>" . "&nbsp";
 					echo "<a href='addsurgery.php?id=$now[Pat_ID]' class='btn btn-info'>ArrangeOper</a>";
 	    }
 	    ?>
@@ -69,7 +69,37 @@
 								echo "<td>" . $now["OpTime"] . "</td>";
 								echo "<td>" . $now["Doctor_ID"] . "</td>";
 								echo "<td>" . $now["OpRoom_ID"] . "</td>";
-								echo "<td>" .  "<a href='surgery.php?id=$now[id]' class='btn btn-info'>Cancel</a>" . "</td>";
+								echo "<td>" .  "<a href='cancelSurgery.php?id=$now[id]' class='btn btn-info'>Cancel</a>" . "</td>";
+								echo "</tr>";
+						}
+					 ?>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="col-md-offset-1 col-md-6 panel panel-info">
+		<div class="panel-heading text-center"><h4>Rountine Bills</h4></div>
+		<div class="panel-body">
+			<table class="table table-hover">
+				<tr>
+					<th>bills_ID</th>
+					<th>Pat_ID</th>
+					<th>Amount</th>
+					<th>Card_Balance</th>
+					<th>Date</th>
+					<th>Operation</th>
+				</tr>
+				<tbody>
+					<?php
+						$cns = $con->query("select * from Bills where Pat_ID=".$_GET['id']."");
+						while ($now = $cns->fetch_assoc()){
+								echo "<tr>";
+								echo "<td>" . $now["id"] . "</td>";
+								echo "<td>" . $now["Pat_ID"] . "</td>";
+								echo "<td>" . $now["Amount"] . "</td>";
+								echo "<td>" . $now["Card_Balance"] . "</td>";
+								echo "<td>" . $now["Date"] . "</td>";
+								echo "<td>" .  "<a href='Reimburse.php?id=$now[id]' class='btn btn-info'>Reimburse</a>" . "</td>";
 								echo "</tr>";
 						}
 					 ?>

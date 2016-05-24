@@ -21,25 +21,39 @@
 <body>
 
 <div id="container">
+	<?php
+		$con = new mysqli("57306aae8f8cf.bj.cdb.myqcloud.com:5651", "cdb_outerroot", "jiangli77", "HearthStone");
+		if(mysqli_connect_errno())
+		{
+				echo mysqli_connect_error();
+		}
+
+		$ans = $con->query("select * from Bills where id=".$_GET['id']."")->fetch_object();
+		//echo $ans->Pat_ID;
+		?>
 	<br>
-	<h1 class="text-center">Arrange Operation Details</h1>
+	<h1 class="text-center">Reimburse Bills Details</h1>
 	<br><br>
-	<form class="col-md-offset-2 col-md-8 jumbotron" action="surgery_success.php" method="post">
+	<form class="col-md-offset-2 col-md-8 jumbotron" action="reimburse_success.php" method="post">
 	  <div class="form-group">
-	    <label>OpeartionTime</label>
-	    <input class="form-control" name="OpTime" placeholder="OperationTime">
+	    <label>id</label>
+			<input class="form-control" name="id" value=<?php echo $ans->id;?> readonly>
 	  </div>
 	  <div class="form-group">
-	    <label>Doctor_ID</label>
-	    <input class="form-control" name="Doctor_ID" placeholder="Doctor_ID">
+	    <label>Pat_ID</label>
+	    <input class="form-control" name="Pat_ID" value=<?php echo $ans->Pat_ID;?> readonly>
 	  </div>
 		<div class="form-group">
-			<label>Patient_ID</label>
-			<input class="form-control" name="Patient_ID" placeholder="Patient_ID">
+			<label>Amount</label>
+			<input class="form-control" name="Amount" placeholder=<?php echo $ans->Amount;?>>
 		</div>
 		<div class="form-group">
-			<label>OpRoom_ID</label>
-			<input class="form-control" name="OpRoom_ID" placeholder="OpRoom_ID">
+			<label>Card_Balance</label>
+			<input class="form-control" name="Card_Balance" placeholder="Card_Balance">
+		</div>
+		<div class="form-group">
+			<label>Date</label>
+			<input class="form-control" name="Date" placeholder="Date">
 		</div>
 		<button type="submit" class="btn btn-info">Submit</button>
 	</form>

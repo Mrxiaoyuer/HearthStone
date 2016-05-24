@@ -22,27 +22,40 @@
 
 <div id="container">
 	<br>
-	<h1 class="text-center">Arrange Operation Details</h1>
 	<br><br>
-	<form class="col-md-offset-2 col-md-8 jumbotron" action="surgery_success.php" method="post">
-	  <div class="form-group">
-	    <label>OpeartionTime</label>
-	    <input class="form-control" name="OpTime" placeholder="OperationTime">
-	  </div>
-	  <div class="form-group">
-	    <label>Doctor_ID</label>
-	    <input class="form-control" name="Doctor_ID" placeholder="Doctor_ID">
-	  </div>
-		<div class="form-group">
-			<label>Patient_ID</label>
-			<input class="form-control" name="Patient_ID" placeholder="Patient_ID">
-		</div>
-		<div class="form-group">
-			<label>OpRoom_ID</label>
-			<input class="form-control" name="OpRoom_ID" placeholder="OpRoom_ID">
-		</div>
-		<button type="submit" class="btn btn-info">Submit</button>
-	</form>
+	<?php
+		$data=$_POST;
+		$con = new mysqli("57306aae8f8cf.bj.cdb.myqcloud.com:5651", "cdb_outerroot", "jiangli77", "HearthStone");
+		if(mysqli_connect_errno())
+		{
+				echo mysqli_connect_error();
+		}
+		$ans = $con->query("delete from Bills where id=$data[id]");
+		$bns = $con->query("insert into Bills (id,Pat_ID,Amount,Card_Balance,Date) values ($data[id],$data[Pat_ID],$data[Amount],$data[Card_Balance],$data[Date])");
+		echo $data['id'];
+		if(!$bns){
+			echo "<h1 class='text-center'>Arrange Failed...</h1>";
+			echo "<h1 class='text-center'>Please Try Again....</h1>";
+		}else{
+			echo "<h1 class='text-center'>Arrange Successfully...</h1>";
+		}
+	 ?>
+	 <script type="text/javascript">
+		 onload=function(){
+			 setInterval(go, 1000);
+		 };
+		 var x=2;
+		 function go(){
+			 x--;
+			 if(x>0){
+				 document.getElementById("sp").innerHTML=x;
+			 }else{
+				 <?php
+				 echo "location.href='patient.php?id=$data[Pat_ID]'";
+				 ?>
+			 }
+		 }
+	 </script>
 </div>
 
 </body>
