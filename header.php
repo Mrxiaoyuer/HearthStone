@@ -17,10 +17,10 @@
               
            <div class = "col-md-10 row">
               <ul class="nav navbar-nav col-md-11">
-                 <li><a href="./index.php">Patient Info</a></li>
-                 <li><a href="#">Doctor Info</a></li>
-                 <li><a href="#">Worker Info</a></li>
-                 <li><a href="#">Manager Info</a></li>
+                 <li><a href="./Patient.php">Patient Info</a></li>
+                 <li><a href="./Doctor.php">Doctor Info</a></li>
+                 <li><a href="./WorkerTodolist.php">Worker Info</a></li>
+                 <li><a href="./All_Devices.php">Devices Info</a></li>
 
               </ul>
               <ul class="nav navbar-nav col-md-1">

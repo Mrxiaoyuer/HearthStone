@@ -3,10 +3,10 @@
 include 'globalcon.php';
 
 //DATABASE CONNECTION VARIABLES
-$host = "localhost"; // Host name
-$username = "root"; // Mysql username
-$password = "shaoshuai"; // Mysql password
-$db_name = "hearthstone"; // Database name
+$host = "57306aae8f8cf.bj.cdb.myqcloud.com:5651"; // Host name
+$username = "cdb_outerroot"; // Mysql username
+$password = "jiangli77"; // Mysql password
+$db_name = "HearthStone"; // Database name
 $tbl_name = "users"; // Table name
 
 //Set this for global site use

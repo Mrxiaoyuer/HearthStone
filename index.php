@@ -19,5 +19,5 @@
     </div> <!-- /container -->
 
 <?php 
-  require('footer.php');        // 导航栏
+  require('footer.php');        // 底部
 ?> 
