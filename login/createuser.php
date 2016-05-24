@@ -1,5 +1,22 @@
+<html>
+<script type="text/javascript">
+  onload=function(){
+    setInterval(go, 1000);
+  };
+  var x=1;
+  function go(){
+    x--;
+    if(x>0){
+      document.getElementById("sp").innerHTML=x;
+    }else{
+      location.href='main_login.php';
+    }
+  }
+</script>	
+
+
 <?php
-//require 'scripts/PHPMailer/class.phpmailer.php';
+//equire 'scripts/PHPMailer/class.phpmailer.php';
 require 'scripts/class.loginscript.php';
 include_once 'config.php';
 
@@ -9,13 +26,13 @@ include_once 'config.php';
 	$newpw = password_hash($_POST['password1'], PASSWORD_DEFAULT);
 	$pw1 = $_POST['password1'];
 	$pw2 = $_POST['password2'];
+	$usertype = $_POST['usertype'];
+	// if (isset($_POST['usertype'])){
 
-	if (isset($_POST['usertype'])){
-		$usertype = $_POST['usertype'];
-	}
-	else{
-		$usertype = 1;
-	}
+	// }
+	// else{
+	// 	$usertype = 1;
+	// }
 
 
 	//Enables moderator verification (overrides user self-verification emails)
@@ -62,3 +79,4 @@ else{
 	}
 };
 ?>
+</html>

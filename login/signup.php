@@ -30,17 +30,15 @@
                 <br>
                 <input name="password1" id="password1" type="password" class="form-control" placeholder="Password">
                 <input name="password2" id="password2" type="password" class="form-control" placeholder="Repeat Password">
-                <select name="usertype[]" class = "form-control">
-                    <option value="none">User Type</option>
+                <select name="usertype" class = "form-control">
                     <option value="1">Manager</option>
                     <option value="2">Doctor</option>
                     <option value="3">Patient</option>
                     <option value="4">Worker</option>
                 </select>
+                <div id="message"></div>
                 <br><br>
                 <button name="Submit" id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
-
-                <div id="message"></div>
             </form>
 
         </div> <!-- /container -->  
@@ -50,7 +48,7 @@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script type="text/javascript" src="js/bootstrap.js"></script>
 
-        <script src="js/signup.js"></script>
+        <!-- <script src="js/signup.js"></script> -->
 
 
         <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
