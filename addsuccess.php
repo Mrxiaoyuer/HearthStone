@@ -20,35 +20,42 @@
 
 <body>
 
-<script type="text/javascript">
-  onload=function(){
-    setInterval(go, 1000);
-  };
-  var x=2;
-  function go(){
-    x--;
-    if(x>0){
-      document.getElementById("sp").innerHTML=x;
-    }else{
-      location.href='All_Devices.php';
-    }
-  }
-</script>
-
 <div id="container">
-  <br /><br /><br /><br />
-	<h1 class="text-center">Repair Report Successfully...</h1>
-  <h1 class="text-center">Please wait for a second...</h1>
-  <?php
-	$con = new mysqli("57306aae8f8cf.bj.cdb.myqcloud.com:5651", "cdb_outerroot", "jiangli77", "HearthStone");
-	if(mysqli_connect_errno())
-	{
-			echo mysqli_connect_error();
-	}
-
-  $bns = $con->query("update All_Devices set state=1 where id=".$_GET['id']."");
-
-  ?>
+	<br>
+	<h1 class="text-center">Arrange Operation Details</h1>
+	<br><br>
+	<?php
+		$data=$_POST;
+		//echo $data['OpTime'];
+		$con = new mysqli("57306aae8f8cf.bj.cdb.myqcloud.com:5651", "cdb_outerroot", "jiangli77", "HearthStone");
+		if(mysqli_connect_errno())
+		{
+				echo mysqli_connect_error();
+		}
+		$bns = $con->query("insert into Surgery (OpTime,Doctor_ID,Patient_ID,OpRoom_ID) values ($data[OpTime],$data[Doctor_ID],$data[Patient_ID],$data[OpRoom_ID])");
+		if(!$bns){
+			echo "<h1 class='text-center'>Arrange Failed...</h1>";
+			echo "<h1 class='text-center'>Please Try Again....</h1>";
+		}else{
+			echo "<h1 class='text-center'>Arrange Successfully...</h1>";
+		}
+	 ?>
+	 <script type="text/javascript">
+		 onload=function(){
+			 setInterval(go, 1000);
+		 };
+		 var x=2;
+		 function go(){
+			 x--;
+			 if(x>0){
+				 document.getElementById("sp").innerHTML=x;
+			 }else{
+				 <?php
+				 echo "location.href='patient.php?id=$data[Patient_ID]'";
+				 ?>
+			 }
+		 }
+	 </script>
 </div>
 
 </body>

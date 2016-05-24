@@ -20,35 +20,29 @@
 
 <body>
 
-<script type="text/javascript">
-  onload=function(){
-    setInterval(go, 1000);
-  };
-  var x=2;
-  function go(){
-    x--;
-    if(x>0){
-      document.getElementById("sp").innerHTML=x;
-    }else{
-      location.href='All_Devices.php';
-    }
-  }
-</script>
-
 <div id="container">
-  <br /><br /><br /><br />
-	<h1 class="text-center">Repair Report Successfully...</h1>
-  <h1 class="text-center">Please wait for a second...</h1>
-  <?php
-	$con = new mysqli("57306aae8f8cf.bj.cdb.myqcloud.com:5651", "cdb_outerroot", "jiangli77", "HearthStone");
-	if(mysqli_connect_errno())
-	{
-			echo mysqli_connect_error();
-	}
-
-  $bns = $con->query("update All_Devices set state=1 where id=".$_GET['id']."");
-
-  ?>
+	<br>
+	<h1 class="text-center">Arrange Operation Details</h1>
+	<br><br>
+	<form class="col-md-offset-2 col-md-8 jumbotron" action="addsuccess.php" method="post">
+	  <div class="form-group">
+	    <label>OpeartionTime</label>
+	    <input class="form-control" name="OpTime" placeholder="OperationTime">
+	  </div>
+	  <div class="form-group">
+	    <label>Doctor_ID</label>
+	    <input class="form-control" name="Doctor_ID" placeholder="Doctor_ID">
+	  </div>
+		<div class="form-group">
+			<label>Patient_ID</label>
+			<input class="form-control" name="Patient_ID" placeholder="Patient_ID">
+		</div>
+		<div class="form-group">
+			<label>OpRoom_ID</label>
+			<input class="form-control" name="OpRoom_ID" placeholder="OpRoom_ID">
+		</div>
+		<button type="submit" class="btn btn-info">Submit</button>
+	</form>
 </div>
 
 </body>

@@ -30,7 +30,7 @@
     if(x>0){
       document.getElementById("sp").innerHTML=x;
     }else{
-      location.href='index.php';
+      location.href='All_Devices.php';
     }
   }
 </script>
@@ -47,23 +47,6 @@
 	}
 
   $bns = $con->query("update All_Devices set state=0 where id=".$_GET['id']."");
-
-	/*echo "<table class='table'>";
-
-	echo "<th>" . "id" . "<br >". "</th>";
-	echo "<th>" . "Dev_Name" . "<br >". "</th>";
-	echo "<th>" . "Descrip" . "<br >" . "</th>";
-
-	$ans = $con->query("select * from Worker_Todolist");
-	while($now = $ans->fetch_assoc()){
-		echo "<tr>";
-		echo "<td>" . $now["id"] . "</td>";
-		echo "<td>" . $now["Dev_Name"] . "</td>";
-		echo "<td>" . $now["Descrip"] . "</td>";
-		echo "</tr>";
-	}
-	echo "</table>";
-	*/
 
   ?>
 </div>

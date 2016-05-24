@@ -37,37 +37,37 @@
 						<th>Option</th>
 	        </tr>
 			</thead>
-	        <tbody>
-	            <?php
-							$con = new mysqli("57306aae8f8cf.bj.cdb.myqcloud.com:5651", "cdb_outerroot", "jiangli77", "HearthStone");
-							if(mysqli_connect_errno())
-							{
-							    echo mysqli_connect_error();
-							}
+      <tbody>
+          <?php
+					$con = new mysqli("57306aae8f8cf.bj.cdb.myqcloud.com:5651", "cdb_outerroot", "jiangli77", "HearthStone");
+					if(mysqli_connect_errno())
+					{
+					    echo mysqli_connect_error();
+					}
 
-	            $ans = $con->query("select * from All_Devices");
+          $ans = $con->query("select * from All_Devices");
 
-	            while ($now = $ans->fetch_assoc()){
-	                echo "<tr>";
-	                echo "<td>" . $now["id"] . "</td>";
-	                echo "<td>" . $now["Dev_Name"] . "</td>";
-	                echo "<td>" . $now["State"] . "</td>";
-	                echo "<td>" . $now["Belong_Room"] . "</td>";
-									echo "<td>" . $now["In_Charge"] . "</td>";
-									echo "<td>" . "<a href='bd-report.php?id=$now[id]' class='btn btn-info'>Break</a>" . "&nbsp";
-									echo "<a href='rp-report.php?id=$now[id]' class='btn btn-info'>Fixed</a>" ."</td>";
-	                echo "</tr>";
-	            }
-	            $ans->close();
-	            ?>
-							<script type="text/javascript">
-							$(document).ready(function(){
-							  $("button").click(function(){
+          while ($now = $ans->fetch_assoc()){
+              echo "<tr>";
+              echo "<td>" . $now["id"] . "</td>";
+              echo "<td>" . $now["Dev_Name"] . "</td>";
+              echo "<td>" . $now["State"] . "</td>";
+              echo "<td>" . $now["Belong_Room"] . "</td>";
+							echo "<td>" . $now["In_Charge"] . "</td>";
+							echo "<td>" . "<a href='bd-report.php?id=$now[id]' class='btn btn-info'>Break</a>" . "&nbsp";
+							echo "<a href='rp-report.php?id=$now[id]' class='btn btn-info'>Fixed</a>" ."</td>";
+              echo "</tr>";
+          }
+          $ans->close();
+          ?>
+					<script type="text/javascript">
+					$(document).ready(function(){
+					  $("button").click(function(){
 
-							  });
-							});
-							</script>
-	        </tbody>
+					  });
+					});
+					</script>
+      </tbody>
 		</table>
 	</div>
 </div>
