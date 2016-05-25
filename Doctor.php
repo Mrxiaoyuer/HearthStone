@@ -5,7 +5,7 @@
 
 
 <br>
-<h1 class="text-center"> Doctor's Information List</h1>
+<h1 class="text-center"> Docotr's Information List</h1>
 <br>
 <?php
   $con = new mysqli("57306aae8f8cf.bj.cdb.myqcloud.com:5651", "cdb_outerroot", "jiangli77", "HearthStone");
@@ -45,7 +45,7 @@
         echo "<div id='container'>
         	<br>
         	<br>
-        	<div class='col-md-offset-2 col-md-8 panel panel-info  jumbotron'>
+        	<div class='col-md-offset-2 col-md-7 panel panel-info'>
         		<div class='panel-heading'>
         			<div class='text-center'>Doctor Lists</div>
         		</div>
