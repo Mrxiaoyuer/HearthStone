@@ -41,10 +41,10 @@
                       echo '<li><a href="#">Manager Info</a></li>';
                     }
                     elseif ($nowuser["usertype"] == 2){
-                      echo '<li><a href="./Doctor.php">Manager Info</a></li>';
+                      echo '<li><a href="./Doctor.php?id='.$nowuser["usertypeID"] .'">Doctor Info</a></li>';
                     }
                     elseif ($nowuser["usertype"] == 3){
-                      echo '<li><a href="./Patient.php">Patient Info</a></li>';
+                      echo '<li><a href="./Patient.php?id='.$nowuser["usertypeID"] .'">Patient Info</a></li>';
                     }
                     elseif ($nowuser["usertype"] == 4){
                       echo '<li><a href="./WorkerTodolist.php">Worker Info</a></li>';

@@ -7,6 +7,19 @@
     // $sql = "select * from users where username='$username'";
     // $ans = $con->query($sql);
 
+  switch ((int)$_SESSION["usertype"]){
+        case 1:
+          $usertype = "Manager";break;
+        case 2:
+          $usertype = "Doctor";break;
+        case 3:
+          $usertype = "Patient";break;
+        case 4:
+          $usertype = "Worker";break;
+        default:
+          $usertype = "GG"; break;
+  }
+
 ?>
     <h1 class = "text-center"> User Information </h1>
     <div class = "row">
@@ -19,6 +32,7 @@
                         <th>Email</th>
                         <th>UserType</th>
                         <th>CreateTime</th>
+                        <th><?php echo $usertype . " ID" ?></th>
             </tr>
             </thead>
         <tbody>
@@ -33,7 +47,13 @@
               echo "<td>" . $now["email"] . "</td>";
               echo "<td>" . $now["usertype"] . "</td>";
               echo "<td>" . $now["mod_timestamp"] . "</td>";
-              echo "</tr>";
+              if ($now["usertypeID"] == 0){
+                echo '<td>Not Verified!</td>';
+              }
+              else{
+                echo '<td>' . $now["usertypeID"] . '</td>';
+              }
+              echo "</tr>"; 
           }
         ?>
 
@@ -41,51 +61,13 @@
         </table>
     </div>
     </div>
-    <?php
-      switch ((int)$_SESSION["usertype"]){
-        case 1:
-          $usertype = "Manager";break;
-        case 2:
-          $usertype = "Doctor";break;
-        case 3:
-          $usertype = "Patient";break;
-        case 4:
-          $usertype = "Worker";break;
-        default:
-          $usertype = "GG"; break;
-      }
-    ?>
-
-    <h1 class = "text-center"> <?php echo $usertype ?> Information </h1>
-
-    <?php
-      $now_username = $_SESSION['username'];
-      $sql = "select * from users where username='$now_username'";
-      $ans = $con->query($sql); 
-      $now = $ans->fetch_assoc();
-      if ($now["usertypeID"] == 0){
-        echo '<h4 class = "text-center">You have not been verified!</h4>';
-      }
-      else{
-        echo '<h4> Your Information! </h4>';
-
-      }
-    ?>
 
     
-
 
     <br><br><br>
     <div class = "row text-center">
       <a href="login/logout.php" class="btn btn-default btn-lg">Logout</a>  
     </div>
-    <?php
-      // echo $_SESSION["username"]."<br>";
-      // echo $_SESSION["password"]."<br>";
-      // echo $_SESSION["usertype"]."<br>";
-
-
-    ?>
 
 
 <?php
