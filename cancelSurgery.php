@@ -3,7 +3,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Beautiful design tables in HTML in the style of a zebra.</title>
-	<script src="./js/jquery.js"></script>
+
+	<script src="./js/jquery.min.js"></script>
 	<!-- 新 Bootstrap 核心 CSS 文件 -->
 	<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
@@ -30,7 +31,7 @@
 	{
 			echo mysqli_connect_error();
 	}
-	//$ans = $con->query("select Patient_ID from Surgery where id=".$_GET['id']."")->fetch_object()->Patient_ID;
+	$ans = $con->query("select Patient_ID from Surgery where id=".$_GET['id']."")->fetch_object()->Patient_ID;
 	//echo $ans;
   $bns = $con->query("delete from Surgery where id=".$_GET['id']."");
 
@@ -47,7 +48,7 @@
 	      document.getElementById("sp").innerHTML=x;
 	    }else{
 				<?php
-	      echo "location.href='patient.php?id=".$_GET['id']."'";
+	      echo "location.href='patient.php?id=$ans'";
 				?>
 	    }
 	  }

@@ -1,6 +1,6 @@
-<?php 
+<?php
   require('header.php');        // 底部
-?> 
+?>
 
 
 
@@ -67,6 +67,47 @@
 		</div>
 	</div>
 
-<?php 
+	<div class="col-md-offset-1 col-md-7 panel panel-info">
+		<div class="panel-heading">
+			<div class="text-center">Surgery List</div>
+		</div>
+		<div class="panel-body">
+			<table class="table table-hover">
+				<tr>
+					<th>id</th>
+					<th>OpTime</th>
+					<th>Patient_ID</th>
+					<th>OpRoom_ID</th>
+					<th>Details</th>
+				</tr>
+				<tbody>
+					<?php
+					$con = new mysqli("57306aae8f8cf.bj.cdb.myqcloud.com:5651", "cdb_outerroot", "jiangli77", "HearthStone");
+					if(mysqli_connect_errno()){
+							echo mysqli_connect_error();
+					}
+
+					$bns = $con->query("select * from Doctor_Todolist where Doc_ID=".$_GET['id']."");
+
+					while ($now = $bns->fetch_assoc()){
+							echo "<tr>";
+							echo "<td>" . $now["id"] . "</td>";
+							echo "<td>" . $now["OpDate"] . "</td>";
+							echo "<td>" . $now["Pat_ID"] . "</td>";
+							echo "<td>" . $now["OpRoom"] . "</td>";
+							echo "<td>" . "<a href='patient.php?id=$now[Pat_ID]' class='btn btn-info'>Details</a>" . "</td>";
+							echo "</tr>";
+					}
+					$bns->close();
+					?>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+</body>
+</html>
+<?php
   require('footer.php');        // 底部
-?> 
+?>

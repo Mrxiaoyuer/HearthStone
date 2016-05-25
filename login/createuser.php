@@ -63,8 +63,7 @@ else{
 		if($response == 'true'){
 
 			echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
-			</button>'. $signupthanks .'</div><div id="returnVal" style="display:none;">true</div>
-			<br><a href = "../login/main_login.php">Sign In</a>';
+			</button>'. $signupthanks .'</div><div id="returnVal" style="display:none;">true</div>';
 
 			//Send verification email
 			//$m = new mailSender;

@@ -3,7 +3,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Beautiful design tables in HTML in the style of a zebra.</title>
-	<script src="./js/jquery.js"></script>
+
+	<script src="./js/jquery.min.js"></script>
 	<!-- 新 Bootstrap 核心 CSS 文件 -->
 	<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
@@ -22,17 +23,29 @@
 
 <div id="container">
 	<br>
-	<h1 class="text-center">Arrange Operation Details</h1>
 	<br><br>
 	<?php
 		$data=$_POST;
-		//echo $data['OpTime'];
 		$con = new mysqli("57306aae8f8cf.bj.cdb.myqcloud.com:5651", "cdb_outerroot", "jiangli77", "HearthStone");
 		if(mysqli_connect_errno())
 		{
 				echo mysqli_connect_error();
 		}
-		$bns = $con->query("insert into Surgery (OpTime,Doctor_ID,Patient_ID,OpRoom_ID) values ($data[OpTime],$data[Doctor_ID],$data[Patient_ID],$data[OpRoom_ID])");
+<<<<<<< HEAD
+		$amount = $con->query("select Amount from Bills where id=$data[id]")->fetch_object()->Amount;
+		$balance = $con->query("select Card_Balance from Bills where id=$data[id]")->fetch_object()->Card_Balance;
+		echo $amount*$data['Reimburse_Ratio'] . "<br>";
+		$amount = $amount*$data["Reimburse_Ratio"];
+		$balance = $balance + $amount;
+		echo "<br />" . $balance;
+		$ans = $con->query("delete from Bills where id=$data[id]");
+		$bns = $con->query("insert into Bills (id,Pat_ID,Amount,Card_Balance,Date) values ($data[id],$data[Pat_ID],$amount,$balance,$data[Date])");
+		//echo $data['id'];
+=======
+		$ans = $con->query("delete from Bills where id=$data[id]");
+		$bns = $con->query("insert into Bills (id,Pat_ID,Amount,Card_Balance,Date) values ($data[id],$data[Pat_ID],$data[Amount],$data[Card_Balance],$data[Date])");
+		echo $data['id'];
+>>>>>>> efcf9987f89b0c510baadde6e85fb0bcab6c36df
 		if(!$bns){
 			echo "<h1 class='text-center'>Arrange Failed...</h1>";
 			echo "<h1 class='text-center'>Please Try Again....</h1>";
@@ -51,7 +64,11 @@
 				 document.getElementById("sp").innerHTML=x;
 			 }else{
 				 <?php
-				 echo "location.href='patient.php?id=$data[Patient_ID]'";
+<<<<<<< HEAD
+				 	echo "location.href='patient.php?id=$data[Pat_ID]'";
+=======
+				 echo "location.href='patient.php?id=$data[Pat_ID]'";
+>>>>>>> efcf9987f89b0c510baadde6e85fb0bcab6c36df
 				 ?>
 			 }
 		 }
