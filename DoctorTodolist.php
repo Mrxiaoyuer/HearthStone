@@ -19,30 +19,31 @@
 </head>
 
 <body>
-
 <div id="container">
-	<br>
-	<h1 class="text-center">Arrange Operation Details</h1>
-	<br><br>
-	<form class="col-md-offset-2 col-md-8 jumbotron" action="surgery_success.php" method="post">
-	  <div class="form-group">
-	    <label>OpeartionTime</label>
-	    <input class="form-control" name="OpTime" placeholder="OperationTime">
-	  </div>
-	  <div class="form-group">
-	    <label>Doctor_ID</label>
-	    <input class="form-control" name="Doctor_ID" placeholder="Doctor_ID">
-	  </div>
-		<div class="form-group">
-			<label>Patient_ID</label>
-			<input class="form-control" name="Patient_ID" placeholder="Patient_ID">
-		</div>
-		<div class="form-group">
-			<label>OpRoom_ID</label>
-			<input class="form-control" name="OpRoom_ID" placeholder="OpRoom_ID">
-		</div>
-		<button type="submit" class="btn btn-info">Submit</button>
-	</form>
+	<h1 class="text-center">Surgery List</h1>
+  <br /><br /><br /><br />
+	<table class="table">
+	  <?php
+		echo "<th>" . "id" . "<br >". "</th>";
+		echo "<th>" . "OpDate" . "<br >". "</th>";
+		echo "<th>" . "Doc_ID" . "<br >" . "</th>";
+		echo "<th>" . "OpRoom" . "<br >" . "</th>";
+	  $con = new mysqli("57306aae8f8cf.bj.cdb.myqcloud.com:5651", "cdb_outerroot", "jiangli77", "HearthStone");
+		if(mysqli_connect_errno())
+		{
+		    echo mysqli_connect_error();
+		}
+		$ans = $con->query("select * from Doctor_Todolist");
+		while($now = $ans->fetch_assoc()){
+			echo "<tr>";
+			echo "<td>" . $now["id"] . "</td>";
+			echo "<td>" . $now["OpDate"] . "</td>";
+			echo "<td>" . $now["Doc_ID"] . "</td>";
+			echo "<td>" . $now["OpRoom"] . "</td>";
+			echo "</tr>";
+		}
+	  ?>
+	</table>
 </div>
 
 </body>

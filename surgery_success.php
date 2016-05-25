@@ -3,6 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Beautiful design tables in HTML in the style of a zebra.</title>
+
 	<script src="./js/jquery.min.js"></script>
 	<!-- 新 Bootstrap 核心 CSS 文件 -->
 	<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -24,25 +25,41 @@
 	<br>
 	<h1 class="text-center">Arrange Operation Details</h1>
 	<br><br>
-	<form class="col-md-offset-2 col-md-8 jumbotron" action="surgery_success.php" method="post">
-	  <div class="form-group">
-	    <label>OpeartionTime</label>
-	    <input class="form-control" name="OpTime" placeholder="OperationTime">
-	  </div>
-	  <div class="form-group">
-	    <label>Doctor_ID</label>
-	    <input class="form-control" name="Doctor_ID" placeholder="Doctor_ID">
-	  </div>
-		<div class="form-group">
-			<label>Patient_ID</label>
-			<input class="form-control" name="Patient_ID" placeholder="Patient_ID">
-		</div>
-		<div class="form-group">
-			<label>OpRoom_ID</label>
-			<input class="form-control" name="OpRoom_ID" placeholder="OpRoom_ID">
-		</div>
-		<button type="submit" class="btn btn-info">Submit</button>
-	</form>
+	<?php
+		$data=$_POST;
+		$con = new mysqli("57306aae8f8cf.bj.cdb.myqcloud.com:5651", "cdb_outerroot", "jiangli77", "HearthStone");
+		if(mysqli_connect_errno())
+		{
+				echo mysqli_connect_error();
+		}
+		$bns = $con->query("insert into Surgery (OpTime,Doctor_ID,Patient_ID,OpRoom_ID) values ($data[OpTime],$data[Doctor_ID],$data[Patient_ID],$data[OpRoom_ID])");
+		if(!$bns){
+			echo "<h1 class='text-center'>Arrange Failed...</h1>";
+			echo "<h1 class='text-center'>Please Try Again....</h1>";
+		}else{
+			echo "<h1 class='text-center'>Arrange Successfully...</h1>";
+		}
+	 ?>
+	 <script type="text/javascript">
+		 onload=function(){
+			 setInterval(go, 1000);
+		 };
+<<<<<<< HEAD
+		 var x=1;
+=======
+		 var x=2;
+>>>>>>> efcf9987f89b0c510baadde6e85fb0bcab6c36df
+		 function go(){
+			 x--;
+			 if(x>0){
+				 document.getElementById("sp").innerHTML=x;
+			 }else{
+				 <?php
+				 echo "location.href='patient.php?id=$data[Patient_ID]'";
+				 ?>
+			 }
+		 }
+	 </script>
 </div>
 
 </body>
