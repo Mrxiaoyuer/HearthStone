@@ -30,10 +30,14 @@
 		{
 				echo mysqli_connect_error();
 		}
+<<<<<<< HEAD
 		$cns = $con->query("select * from Prescription where Pre_ID=$data[Pre_ID]")->fetch_object();
 		if($cns) {
 			$ans = $con->query("delete from Prescription where Pre_ID=$data[Pre_ID]");
 		}
+=======
+		$ans = $con->query("delete from Prescription where Pat_ID=$data[Pat_ID]");
+>>>>>>> efcf9987f89b0c510baadde6e85fb0bcab6c36df
 		$bns = $con->query("insert into Prescription (Pre_ID,Pat_ID,Doc_ID,Pre_date,content) values ($data[Pre_ID],$data[Pat_ID],$data[Doc_ID],$data[Pre_date],$data[content])");
 		//echo $data['content'];
 		if(!$bns){

@@ -29,11 +29,15 @@
 		}
 
 		$ans = $con->query("select * from Bills where id=".$_GET['id']."")->fetch_object();
+<<<<<<< HEAD
 		if($ans){
 		 //echo $ans->Pat_ID;
 		}else{
 			echo "No Record!";
 		}
+=======
+		//echo $ans->Pat_ID;
+>>>>>>> efcf9987f89b0c510baadde6e85fb0bcab6c36df
 		?>
 	<br>
 	<h1 class="text-center">Reimburse Bills Details</h1>
@@ -49,6 +53,7 @@
 	  </div>
 		<div class="form-group">
 			<label>Amount</label>
+<<<<<<< HEAD
 			<input class="form-control" name="Amount" value=<?php echo $ans->Amount;?> readonly>
 		</div>
 		<div class="form-group">
@@ -62,6 +67,17 @@
 		<div class="form-group">
 			<label>Reimburse Ratio</label>
 			<input class="form-control" name="Reimburse_Ratio" value='0.5'>
+=======
+			<input class="form-control" name="Amount" placeholder=<?php echo $ans->Amount;?>>
+		</div>
+		<div class="form-group">
+			<label>Card_Balance</label>
+			<input class="form-control" name="Card_Balance" placeholder="Card_Balance">
+		</div>
+		<div class="form-group">
+			<label>Date</label>
+			<input class="form-control" name="Date" placeholder="Date">
+>>>>>>> efcf9987f89b0c510baadde6e85fb0bcab6c36df
 		</div>
 		<button type="submit" class="btn btn-info">Submit</button>
 	</form>

@@ -25,6 +25,7 @@
 					echo "Sex : " . $now["Sex"] . "<br>". "<br>";
 					echo "Bed_No : " . $now["Bed_No"] . "<br>". "<br>";
 					echo "Primary_doc : " . $now["Primary_doc"] . "<br>". "<br>";
+<<<<<<< HEAD
 					$bns = $con->query("select content from Prescription where Pat_ID= $now[Pat_ID] ")->fetch_object()->content;
 					if($bns) {
 						echo "Prescription: " . $bns . "<br>" . "<br>";
@@ -32,6 +33,10 @@
 					else{
 						echo "Prescription: " . "None";
 					}
+=======
+					$bns = $con->query("select content from Prescription where Pat_ID= $now[Primary_doc] and Doc_ID=$now[Pat_ID]")->fetch_object()->content;
+					echo "Prescription: " . $bns . "<br>" . "<br>";
+>>>>>>> efcf9987f89b0c510baadde6e85fb0bcab6c36df
 					echo "<a href='Prescription.php?id=$now[Pat_ID]' class='btn btn-info'>RePrescrip</a>" . "&nbsp";
 					echo "<a href='addsurgery.php?id=$now[Pat_ID]' class='btn btn-info'>ArrangeOper</a>";
 	    }

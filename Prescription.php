@@ -29,11 +29,14 @@
 		}
 
 		$ans = $con->query("select * from Prescription where Pat_ID=".$_GET['id']."")->fetch_object();
+<<<<<<< HEAD
 		if($ans){
 		 //echo $ans->Pre_ID;
 		}else{
 			echo "<h2 class='text-center'>No Record!</h2>";
 		}
+=======
+>>>>>>> efcf9987f89b0c510baadde6e85fb0bcab6c36df
 		//echo $ans->Pre_ID;
 		?>
 	<br>
@@ -42,6 +45,7 @@
 	<form class="col-md-offset-2 col-md-8 jumbotron" action="prescription_success.php" method="post">
 	  <div class="form-group">
 	    <label>Pre_ID</label>
+<<<<<<< HEAD
 			<input class="form-control" name="Pre_ID" value=<?php if($ans) {echo $ans->Pre_ID;} else {echo "none";}?> >
 	  </div>
 	  <div class="form-group">
@@ -51,6 +55,17 @@
 		<div class="form-group">
 			<label>Doc_ID</label>
 			<input class="form-control" name="Doc_ID" value=<?php if($ans) {echo $ans->Doc_ID;} else {echo "none";}?>>
+=======
+			<input class="form-control" name="Pre_ID" value=<?php echo $ans->Pre_ID;?> readonly>
+	  </div>
+	  <div class="form-group">
+	    <label>Pat_ID</label>
+	    <input class="form-control" name="Pat_ID" value=<?php echo $ans->Pat_ID;?> readonly>
+	  </div>
+		<div class="form-group">
+			<label>Doc_ID</label>
+			<input class="form-control" name="Doc_ID" value=<?php echo $ans->Doc_ID;?> readonly>
+>>>>>>> efcf9987f89b0c510baadde6e85fb0bcab6c36df
 		</div>
 		<div class="form-group">
 			<label>Pre_date</label>
