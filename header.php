@@ -1,4 +1,4 @@
-<?php 
+<?php
   if (!session_id()) session_start();
 
   include_once './login/config.php';
@@ -26,14 +26,14 @@
            <div class="navbar-header col-md-2">
               <a class="navbar-brand" href="./index.php">HearthStone</a>
            </div>
-              
+
            <div class = "col-md-10 row">
               <ul class="nav navbar-nav col-md-11">
-                 <?php 
+                 <?php
                     if ($nowuser["usertype"] == 0){
                     echo '<li><a href="./Patient.php">Patient Info</a></li>
                       <li><a href="./Doctor.php">Doctor Info</a></li>
-                      <li><a href="./WorkerTodolist.php">Worker Info</a></li>
+                      <li><a href="./WorkerTodolist.php">Worker ToDo</a></li>
                       <li><a href="./All_Devices.php">Devices Info</a></li>
                       <li><a href="./map_user.php">Map User</a></li>';
                     }
@@ -55,11 +55,11 @@
                       echo '<li>Error Code</li>';
                     }
                  ?>
-                 
+
 
               </ul>
               <ul class="nav navbar-nav col-md-1">
                 <li><a href = "./profile.php">Profile</a></li>
-              </ul> 
+              </ul>
            </div>
     </nav>

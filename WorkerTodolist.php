@@ -1,8 +1,9 @@
- <?php 
+ <?php
   require('header.php');        // 底部
-?> 
+?>
 
 <div id="container">
+  <div class="col-md-offset-2 col-md-8">
   <br /><br /><br /><br />
 	<table class="table">
 	  <?php
@@ -25,7 +26,8 @@
 	  ?>
 	</table>
 </div>
+</div>
 
-<?php 
+<?php
   require('footer.php');        // 底部
-?> 
+?>

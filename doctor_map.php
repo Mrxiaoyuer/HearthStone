@@ -1,4 +1,4 @@
-<?php 
+<?php
   require('header.php');        // 导航栏
   $pending_username = $_GET['id'];
 
@@ -17,7 +17,7 @@
                         <th>Work_at</th>
                         <th>Option</th>
             </tr>
-            <?php 
+            <?php
             	echo "<strong>Pending patient:</strong> " . $pending_username . "<br>";
             ?>
             </thead>
@@ -67,31 +67,36 @@
   		$con->query($sql);
   		echo $sql;
 
-  		$url = "map_user.php";  
-		echo "< script language='javascript' 
-		type='text/javascript'>";  
-		echo "window.location.href='$url'";  
-		echo "< /script>"; 
+  		$url = "map_user.php";
+		echo "< script language='javascript'
+		type='text/javascript'>";
+		echo "window.location.href='$url'";
+		echo "< /script>";
 	}
 	if (!empty($_POST['doc_name'])){
 		$sql = "select max(Work_ID) as id FROM HearthStone.Doctor order by Work_ID DESC";
 		$ans = $con->query($sql);
 		$now = $ans->fetch_assoc();
 		// echo $sql . "<br>" . $now["id"] . "<br>";
-		
+
 		$next_id = (int)$now["id"] + 1;
 
-		$sql = "insert into Doctor (`Work_ID`, `Name`) VALUES ($next_id, '$_POST[doc_name]')";
-		// echo $sql . "<br>";
-		echo $con->query($sql);
+		$sql = "insert into Doctor (`Work_ID`, `Name`, `Work_at`) VALUES ($next_id, '$_POST[doc_name]', $_POST[work_at])";
+		 echo $sql . "<br>";
+		if ($con->query($sql)){
+        echo "sss";
+    }
+    else{
+        echo "ttt";
+    }
 		$sql = "update users set usertypeID = $next_id where username = '$_GET[id]'";
   		$con->query($sql);
 
-  		$url = "map_user.php";  
-		echo "< script language='javascript' 
-		type='text/javascript'>";  
-		echo "window.location.href='$url'";  
-		echo "< /script>";  
+  		$url = "map_user.php";
+		echo "< script language='javascript'
+		type='text/javascript'>";
+		echo "window.location.href='$url'";
+		echo "< /script>";
 	}
 
   require('footer.php');        // 导航栏
