@@ -20,6 +20,10 @@
 
 
 <body>
+    <?php 
+  require('ManageHeader.php');        // 导航栏
+?>
+
 
 <div id="container">   
 <div class="col-md-offset-2 col-md-8">

@@ -19,7 +19,11 @@
               <ul class="nav navbar-nav col-md-11">
                  <li><a href="./AssignList.php">AssignList</a></li>
                  <li><a href="./RecycleList.php">RecycleList</a></li>
-                 <li><a href="./ManagerRoom.php">ManagerRoom</a></li>
+                 <li><a href="./ManageRoom.php">ManageRoom</a></li>
+
+              </ul>
+              <ul class="nav navbar-nav col-md-1">
+                <li><a href = "../profile.php">Profile</a></li>
               </ul>
            </div>
     </nav>

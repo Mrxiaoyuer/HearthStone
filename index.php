@@ -4,6 +4,9 @@
   if(!isset($_SESSION['username'])){
     header("location:login/main_login.php");
   }
+  elseif ($_SESSION['usertype'] == 1){
+    header("location:Manager/ManageMain.php");
+  }
 ?>
 <?php 
   require('header.php');        // 导航栏
