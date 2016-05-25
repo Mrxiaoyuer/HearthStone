@@ -4,7 +4,7 @@
 
 <div id="container">
   <div class="col-md-offset-2 col-md-8">
-  <br /><br /><br /><br />
+  <br /><br /><h1 class = "text-center">Device To Be Repaired</h1><br /><br />
 	<table class="table">
 	  <?php
 		echo "<th>" . "id" . "<br >". "</th>";

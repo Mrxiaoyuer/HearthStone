@@ -2,9 +2,6 @@
   require('header.php');        // 底部
 ?>
 
-
-
-<br>
 <h1 class="text-center"> Doctor's Information List</h1>
 <br>
 <?php

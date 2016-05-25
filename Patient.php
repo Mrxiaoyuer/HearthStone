@@ -6,9 +6,73 @@
 <br>
 <h1 class="text-center"> Patient's Information List</h1>
 <br>
+
 <div id="container">
 	<br>
-	<div class="col-md-offset-1 col-md-3 panel panel-info">
+	<div class="col-md-offset-1 col-md-6 ">
+		<div class="panel panel-info">
+		<div class="panel-heading text-center"><h4>Opeartion List</h4></div>
+		<div class="panel-body">
+			<table class="table table-hover">
+				<tr>
+					<th>ID</th>
+					<th>OpTime</th>
+					<th>Doc_ID</th>
+					<th>OpRoom_ID</th>
+					<th>Operation</th>
+				</tr>
+				<tbody>
+					<?php
+						$cns = $con->query("select * from Surgery where Patient_ID=".$_GET['id']."");
+						while ($now = $cns->fetch_assoc()){
+								echo "<tr>";
+								echo "<td>" . $now["id"] . "</td>";
+								echo "<td>" . $now["OpTime"] . "</td>";
+								echo "<td>" . $now["Doctor_ID"] . "</td>";
+								echo "<td>" . $now["OpRoom_ID"] . "</td>";
+								echo "<td>" .  "<a href='cancelSurgery.php?id=$now[id]' class='btn btn-info'>Cancel</a>" . "</td>";
+								echo "</tr>";
+						}
+					 ?>
+				</tbody>
+			</table>
+		</div>
+		</div>
+		<div class=" panel panel-info">
+			<div class="panel-heading text-center"><h4>Rountine Bills</h4></div>
+			<div class="panel-body">
+				<table class="table table-hover">
+					<tr>
+						<th>bills_ID</th>
+						<th>Pat_ID</th>
+						<th>Amount</th>
+						<th>Card_Balance</th>
+						<th>Date</th>
+						<th>Operation</th>
+					</tr>
+					<tbody>
+						<?php
+							$cns = $con->query("select * from Bills where Pat_ID=".$_GET['id']."");
+							while ($now = $cns->fetch_assoc()){
+									echo "<tr>";
+									echo "<td>" . $now["id"] . "</td>";
+									echo "<td>" . $now["Pat_ID"] . "</td>";
+									echo "<td>" . $now["Amount"] . "</td>";
+									echo "<td>" . $now["Card_Balance"] . "</td>";
+									echo "<td>" . $now["Date"] . "</td>";
+									echo "<td>" .  "<a href='Reimburse.php?id=$now[id]' class='btn btn-info'>Reimburse</a>" . "</td>";
+									echo "</tr>";
+							}
+						 ?>
+					</tbody>
+				</table>
+			</div>	
+		</div>
+	</div>
+
+	<div class="col-md-offset-1 col-md-3 ">
+		<div class="panel panel-info">
+		<div class="panel-heading"><h4 class = "text-center">My Information</div>
 		<div class="panel-body">
 	    <?php
 
@@ -49,63 +113,6 @@
     	  }
 	    ?>
 		</div>
-	</div>
-	<div class="col-md-offset-1 col-md-6 panel panel-info">
-		<div class="panel-heading text-center"><h4>Opeartion List</h4></div>
-		<div class="panel-body">
-			<table class="table table-hover">
-				<tr>
-					<th>ID</th>
-					<th>OpTime</th>
-					<th>Doc_ID</th>
-					<th>OpRoom_ID</th>
-					<th>Operation</th>
-				</tr>
-				<tbody>
-					<?php
-						$cns = $con->query("select * from Surgery where Patient_ID=".$_GET['id']."");
-						while ($now = $cns->fetch_assoc()){
-								echo "<tr>";
-								echo "<td>" . $now["id"] . "</td>";
-								echo "<td>" . $now["OpTime"] . "</td>";
-								echo "<td>" . $now["Doctor_ID"] . "</td>";
-								echo "<td>" . $now["OpRoom_ID"] . "</td>";
-								echo "<td>" .  "<a href='cancelSurgery.php?id=$now[id]' class='btn btn-info'>Cancel</a>" . "</td>";
-								echo "</tr>";
-						}
-					 ?>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<div class="col-md-offset-1 col-md-6 panel panel-info">
-		<div class="panel-heading text-center"><h4>Rountine Bills</h4></div>
-		<div class="panel-body">
-			<table class="table table-hover">
-				<tr>
-					<th>bills_ID</th>
-					<th>Pat_ID</th>
-					<th>Amount</th>
-					<th>Card_Balance</th>
-					<th>Date</th>
-					<th>Operation</th>
-				</tr>
-				<tbody>
-					<?php
-						$cns = $con->query("select * from Bills where Pat_ID=".$_GET['id']."");
-						while ($now = $cns->fetch_assoc()){
-								echo "<tr>";
-								echo "<td>" . $now["id"] . "</td>";
-								echo "<td>" . $now["Pat_ID"] . "</td>";
-								echo "<td>" . $now["Amount"] . "</td>";
-								echo "<td>" . $now["Card_Balance"] . "</td>";
-								echo "<td>" . $now["Date"] . "</td>";
-								echo "<td>" .  "<a href='Reimburse.php?id=$now[id]' class='btn btn-info'>Reimburse</a>" . "</td>";
-								echo "</tr>";
-						}
-					 ?>
-				</tbody>
-			</table>
 		</div>
 	</div>
 
