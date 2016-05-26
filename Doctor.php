@@ -1,9 +1,6 @@
 <?php
   require('header.php');        // 底部
 ?>
-
-
-
 <br>
 <h1 class="text-center"> Docotr's Information List</h1>
 <br>

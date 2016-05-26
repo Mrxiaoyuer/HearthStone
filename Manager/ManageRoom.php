@@ -28,7 +28,7 @@
 <div id="container">   
 <div class="col-md-offset-2 col-md-8">
     <table class="table">
-    <caption>Assign Room</caption>
+    <h2 class = "text-center">Room List</h2>
         <thead>
             <tr>
                 <th>Room_No</th>

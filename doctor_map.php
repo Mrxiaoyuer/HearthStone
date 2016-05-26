@@ -67,11 +67,7 @@
   		$con->query($sql);
   		echo $sql;
 
-  		$url = "map_user.php";
-		echo "< script language='javascript'
-		type='text/javascript'>";
-		echo "window.location.href='$url'";
-		echo "< /script>";
+  	header("Location: ./map_user.php"); 
 	}
 	if (!empty($_POST['doc_name'])){
 		$sql = "select max(Work_ID) as id FROM HearthStone.Doctor order by Work_ID DESC";
@@ -92,11 +88,7 @@
 		$sql = "update users set usertypeID = $next_id where username = '$_GET[id]'";
   		$con->query($sql);
 
-  		$url = "map_user.php";
-		echo "< script language='javascript'
-		type='text/javascript'>";
-		echo "window.location.href='$url'";
-		echo "< /script>";
+  	header("Location: ./map_user.php"); 
 	}
 
   require('footer.php');        // 导航栏

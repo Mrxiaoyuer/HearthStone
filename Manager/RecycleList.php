@@ -2,7 +2,8 @@
   require('ManageHeader.php');        // 底部
 ?> 
 <div id="container">
-  <br /><br /><br /><br />
+  <br /><br /><h1 class = "text-center">Room To Be Recycled </h1><br /><br />
+  	<div class = "container">
 	<table class="table">
 	  <?php
 		echo "<th>" . "Pat_name" . "<br >". "</th>";
@@ -30,6 +31,7 @@
 		}
 	  ?>
 	</table>
+	</div>
 </div>
 
 <?php 
