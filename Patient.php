@@ -74,7 +74,7 @@
 						 ?>
 					</tbody>
 				</table>
-			</div>	
+			</div>
 		</div>
 
 		<div class=" panel panel-info">
@@ -105,7 +105,7 @@
 						 ?>
 					</tbody>
 				</table>
-			</div>	
+			</div>
 		</div>
 
 	</div>
@@ -121,13 +121,13 @@
 					echo mysqli_connect_error();
 			}
 
-	    
+
 
 			$ans = $con->query("select * from Patient where Pat_ID=".$_GET['id']."");
-	    		
+
 	    while ($now = $ans->fetch_assoc()){
 	    		$doc_name = $con->query("select Name from Doctor where Work_ID=".$now["Primary_doc"]."")->fetch_assoc();
-	        	echo "Pat_ID : " . $now["Pat_ID"] . "<br>". "<br>";
+	        echo "Pat_ID : " . $now["Pat_ID"] . "<br>". "<br>";
 			    echo "Pat_name : " . $now["Pat_name"] . "<br>". "<br>";
 			    echo "Sex : " . $now["Sex"] . "<br>". "<br>";
 			    echo "Bed_No : " . $now["Bed_No"] . "<br>". "<br>";
@@ -138,15 +138,15 @@
 			    //echo "<a href='patient.php?id=$now[Pat_ID]' class='btn btn-info'>RePrescrip</a>" . "&nbsp";
     			//echo "<a href='addsurgery.php?id=$now[Pat_ID]' class='btn btn-info'>ArrangeOper</a>";
 
-				if($_SESSION['usertype'] == 0 || $_SESSION['usertype'] == 2){
-					echo "<a href='Prescription.php?id=$now[Pat_ID]' class='btn btn-info'>RePrescrip</a>" . "&nbsp";
-					echo "<a href='addsurgery.php?id=$now[Pat_ID]' class='btn btn-info'>ArrangeOper</a>" . "<br>" . "<br>";
-				}
+  				if($_SESSION['usertype'] == 0 || $_SESSION['usertype'] == 2){
+  					echo "<a href='Prescription.php?id=$now[Pat_ID]' class='btn btn-info'>RePrescrip</a>" . "&nbsp";
+  					echo "<a href='addsurgery.php?id=$now[Pat_ID]' class='btn btn-info'>ArrangeOper</a>" . "<br>" . "<br>";
+  				}
 
-	          	if($_SESSION['usertype'] == 0 || $_SESSION['usertype'] == 1){
-		          	if($now["Assigned"] == -1){
+	        if($_SESSION['usertype'] == 0 || $_SESSION['usertype'] == 1){
+		        if($now["Assigned"] == -1){
 							echo "<a href = '_SendAssignRoomReq.php?id=$now[Pat_ID]' class='btn btn-info'> Assign Room</a>";
-		          	}
+		        }
 		    		elseif($now["Assigned"] != 0 && $now["Assigned"] != -1)
 	    			{
 	    				echo "<a href = '_SendRecycleRoomReq.php?id=$now[Pat_ID]' class='btn btn-info'>Recycle Room</a>";

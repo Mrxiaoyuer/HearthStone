@@ -3,7 +3,7 @@
   onload=function(){
     setInterval(go, 1000);
   };
-  var x=1;
+  var x=100;
   function go(){
     x--;
     if(x>0){
@@ -12,7 +12,7 @@
       location.href='main_login.php';
     }
   }
-</script>	
+</script>
 
 
 <?php
@@ -61,10 +61,9 @@ else{
 		$response = $a->createUser($newuser, $newid, $newemail, $newpw, $usertype);
 		//Success
 		if($response == 'true'){
-
-			echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
-			</button>'. $signupthanks .'</div><div id="returnVal" style="display:none;">true</div>';
-
+      echo "<div class='container'>";
+			echo '<br><br><br><br><div class="col-md-offset-2 col-md-offset-8"><h2 class="alert alert-success">'. $signupthanks .'</h2></div><div id="returnVal" style="display:none;">true</div>';
+      echo "</div>";
 			//Send verification email
 			//$m = new mailSender;
 			//$m->sendMail($newemail, $newuser, $newid, 'Verify');

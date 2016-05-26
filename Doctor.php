@@ -1,8 +1,8 @@
 <?php
   require('header.php');        // 底部
 ?>
-
-<h1 class="text-center"> Doctor's Information List</h1>
+<br>
+<h1 class="text-center"> Docotr's Information List</h1>
 <br>
 <?php
   $con = new mysqli("57306aae8f8cf.bj.cdb.myqcloud.com:5651", "cdb_outerroot", "jiangli77", "HearthStone");
@@ -42,7 +42,7 @@
         echo "<div id='container'>
         	<br>
         	<br>
-        	<div class='col-md-offset-2 col-md-8 panel panel-info  jumbotron'>
+        	<div class='col-md-offset-2 col-md-8 panel panel-info'>
         		<div class='panel-heading'>
         			<div class='text-center'>Doctor Lists</div>
         		</div>
@@ -84,7 +84,6 @@
         $ans = $con->query("select * from Doctor where Work_ID=".$_GET['id']."");
 	      while ($now = $ans->fetch_assoc()){
 	        echo "Work_ID : " . $now["Work_ID"] . "<br>". "<br>";
-					echo "Salary : " . $now["Salary"] . "<br>". "<br>";
 					echo "Work_at : Department-" . $now["Work_at"] . "<br>". "<br>";
 					echo "Name : " . $now["Name"] . "<br>". "<br>";
 	       }
