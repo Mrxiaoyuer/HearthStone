@@ -35,8 +35,9 @@
 								echo "<td>" . $now["OpTime"] . "</td>";
 								echo "<td>" . $now["Doctor_ID"] . "</td>";
 								echo "<td>" . $now["OpRoom_ID"] . "</td>";
-								echo "<td>" .  "<a href='cancelSurgery.php?id=$now[id]' class='btn btn-info'>Cancel</a>" . "</td>";
-								echo "</tr>";
+								if($_SESSION["usertypeID"] == $now["Doctor_ID"]) echo "<td>" .  "<a href='cancelSurgery.php?id=$now[id]' class='btn btn-info'>Cancel</a>" . "</td>";
+                else echo "<td>None</td>";
+                echo "</tr>";
 						}
 					 ?>
 				</tbody>
@@ -52,7 +53,7 @@
 						<th>Pat_ID</th>
 						<th>Amount</th>
 						<th>Date</th>
-						<th>Operation</th>
+						<th>State</th>
 					</tr>
 					<tbody>
 						<?php
@@ -63,7 +64,12 @@
 									echo "<td>" . $now["Pat_ID"] . "</td>";
 									echo "<td>" . $now["Amount"] . "</td>";
 									echo "<td>" . $now["Date"] . "</td>";
-									echo "<td>" .  "<a href='Reimburse.php?id=$now[id]' class='btn btn-info'>Reimburse</a>" . "</td>";
+									if ($now["state"] == 0){
+										echo "<td>Waiting For Reimbursement</td>";
+									}
+									else{
+										echo "<td>Has been reimbursed</td>";
+									}
 									echo "</tr>";
 							}
 						 ?>
@@ -115,9 +121,6 @@
 			if(mysqli_connect_errno()){
 					echo mysqli_connect_error();
 			}
-
-
-
 			$ans = $con->query("select * from Patient where Pat_ID=".$_GET['id']."");
 
 	    while ($now = $ans->fetch_assoc()){

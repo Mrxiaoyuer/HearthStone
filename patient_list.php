@@ -6,17 +6,16 @@
 
 <h2 class = "text-center"> Patient Information List </h2>
 <div class = "row">
-    <div class="col-md-offset-2 col-md-8">
+    <div class="col-md-offset-2 col-md-8 ">
         <table class="table">
-
             <thead>
             <tr>
-                        <th>Pat_ID</th>
-                        <th>Pat_name</th>
-                        <th>Sex</th>
-                        <th>Bed_No</th>
-                        <th>Primary_doc</th>
-                        <th>Option</th>
+              <th>Pat_ID</th>
+              <th>Pat_name</th>
+              <th>Sex</th>
+              <th>Bed_No</th>
+              <th>Primary_doc</th>
+              <th>Option</th>
             </tr>
             </thead>
         <tbody>
@@ -81,4 +80,3 @@
 
   }
 ?>
-

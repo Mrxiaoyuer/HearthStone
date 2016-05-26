@@ -31,7 +31,7 @@
            <div class = "col-md-10 row">
               <ul class="nav navbar-nav col-md-11">
                  <?php
-                  if($nowuser["usertypeID"]==0){
+                  if($nowuser["usertypeID"]==0 && $nowuser["username"] != 'admin'){
                       //echo "<h3 class='text-center'>Please wait for Authentication!</h3>";
                   }else{
                     if ($nowuser["usertype"] == 0){
@@ -39,12 +39,14 @@
                       <li><a href="./Doctor.php">Doctor Info</a></li>
                       <li><a href="./WorkerTodolist.php">Worker ToDo</a></li>
                       <li><a href="./All_Devices.php">Devices Info</a></li>
-                      <li><a href="./map_user.php">Map User</a></li>';
+                      <li><a href="./map_user.php">Map User</a></li>
+                      <li><a href="./finance.php">Finance</a></li>';  
                     }
                     elseif ($nowuser["usertype"] == 1){
                       echo '<li><a href="./manager/AssignList.php">AssignList</a></li>';
                       echo '<li><a href="./manager/RecycleList.php">RecycleList</a></li>';
                       echo '<li><a href="./manager/ManageRoom.php">ManageRoom</a></li>';
+                      echo '<li><a href="./finance.php">Finance</a></li>';
                     }
                     elseif ($nowuser["usertype"] == 2){
                       echo '<li><a href="./Patient_list.php">Patient Info</a></li>';

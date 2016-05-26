@@ -1,4 +1,4 @@
-<?php 
+<?php
 	  if (!session_id()) session_start();
 
 ?>
@@ -46,11 +46,11 @@
 	<form class="col-md-offset-2 col-md-8 jumbotron" action="prescription_success.php" method="post">
 	  <div class="form-group">
 	    <label>Pat_ID</label>
-	    <input class="form-control" name="Pat_ID" value=<?php if($_GET["id"]) {echo $_GET["id"];} else {echo "none";};?>>
+	    <input class="form-control" name="Pat_ID" value=<?php if($_GET["id"]) {echo $_GET["id"];} else {echo "none";};?> readonly>
 	  </div>
 		<div class="form-group">
 			<label>Doc_ID</label>
-			<input class="form-control" name="Doc_ID" value=<?php if($_SESSION["usertypeID"] && $_SESSION["usertype"] == 2) {echo $_SESSION["usertypeID"];} else {echo "none";}?>>
+			<input class="form-control" name="Doc_ID" value=<?php if($_SESSION["usertypeID"] && $_SESSION["usertype"] == 2) {echo $_SESSION["usertypeID"];} else {echo "none";}?> readonly>
 		</div>
 		<div class="form-group">
 			<label>Pre_date</label>
@@ -62,7 +62,7 @@
 		</div>
 		<div class="form-group">
 	    	<label>Amount</label>
-			<input class="form-control" name="amount" placeholder="numbers of Dollar"> 
+			<input class="form-control" name="amount" placeholder="numbers of Dollar">
 	  	</div>
 		<button type="submit" class="btn btn-info">Submit</button>
 	</form>
