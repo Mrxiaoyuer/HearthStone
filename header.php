@@ -43,20 +43,23 @@
                       <li><a href="./finance.php">Finance</a></li>
                       <li><a href="./Manager/AssignList.php">AssignList</a></li>
                       <li><a href="./Manager/RecycleList.php">RecycleList</a></li>
-                      <li><a href="./Manager/ManageRoom.php">ManageRoom</a></li>';  
+                      <li><a href="./Manager/ManageRoom.php">ManageRoom</a></li>';
                     }
                     elseif ($nowuser["usertype"] == 1){
                       echo '<li><a href="./manager/AssignList.php">AssignList</a></li>';
                       echo '<li><a href="./manager/RecycleList.php">RecycleList</a></li>';
                       echo '<li><a href="./manager/ManageRoom.php">ManageRoom</a></li>';
+                      echo '<li><a href="./All_Devices.php">Devices Info</a></li>';
                       echo '<li><a href="./finance.php">Finance</a></li>';
                     }
                     elseif ($nowuser["usertype"] == 2){
                       echo '<li><a href="./Patient_list.php">Patient Info</a></li>';
                       echo '<li><a href="./Doctor.php?id='.$nowuser["usertypeID"] .'">Doctor Info</a></li>';
+                      echo '<li><a href="./All_Devices.php">Devices Info</a></li>';
                     }
                     elseif ($nowuser["usertype"] == 3){
                       echo '<li><a href="./Patient.php?id='.$nowuser["usertypeID"] .'">Patient Info</a></li>';
+                      echo '<li><a href="./All_Devices.php">Devices Info</a></li>';
                     }
                     elseif ($nowuser["usertype"] == 4){
                       echo '<li><a href="./WorkerTodolist.php">Worker Info</a></li>';
