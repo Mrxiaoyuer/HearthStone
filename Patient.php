@@ -53,7 +53,7 @@
 						<th>Pat_ID</th>
 						<th>Amount</th>
 						<th>Date</th>
-						<th>Operation</th>
+						<th>State</th>
 					</tr>
 					<tbody>
 						<?php
@@ -64,7 +64,12 @@
 									echo "<td>" . $now["Pat_ID"] . "</td>";
 									echo "<td>" . $now["Amount"] . "</td>";
 									echo "<td>" . $now["Date"] . "</td>";
-									echo "<td>" .  "<a href='Reimburse.php?id=$now[id]' class='btn btn-info'>Reimburse</a>" . "</td>";
+									if ($now["state"] == 0){
+										echo "<td>Waiting For Reimbursement</td>";
+									}
+									else{
+										echo "<td>Has been reimbursed</td>";
+									}
 									echo "</tr>";
 							}
 						 ?>
