@@ -44,6 +44,7 @@
                       echo '<li><a href="./manager/ManageRoom.php">ManageRoom</a></li>';
                     }
                     elseif ($nowuser["usertype"] == 2){
+                      echo '<li><a href="./Patient_list.php">Patient Info</a></li>';
                       echo '<li><a href="./Doctor.php?id='.$nowuser["usertypeID"] .'">Doctor Info</a></li>';
                     }
                     elseif ($nowuser["usertype"] == 3){

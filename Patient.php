@@ -73,6 +73,38 @@
 				</table>
 			</div>	
 		</div>
+
+		<div class=" panel panel-info">
+			<div class="panel-heading text-center"><h4>My Prescription</h4></div>
+			<div class="panel-body">
+				<table class="table table-hover">
+					<tr>
+						<th>Pre_ID</th>
+						<th>Pat_Name</th>
+						<th>Doc_Name</th>
+						<th>Pre_date</th>
+						<th>content</th>
+						<th>amount</th>
+					</tr>
+					<tbody>
+						<?php
+							$cns = $con->query("select * from Prescription_view where Pat_ID=".$_GET['id']."");
+							while ($now = $cns->fetch_assoc()){
+									echo "<tr>";
+									echo "<td>" . $now["Pre_ID"] . "</td>";
+									echo "<td>" . $now["Pat_name"] . "</td>";
+									echo "<td>" . $now["Doc_name"] . "</td>";
+									echo "<td>" . $now["Pre_date"] . "</td>";
+									echo "<td>" . $now["content"] . "</td>";
+									echo "<td>" . $now["amount"] . "</td>";
+									echo "</tr>";
+							}
+						 ?>
+					</tbody>
+				</table>
+			</div>	
+		</div>
+
 	</div>
 
 	<div class="col-md-offset-1 col-md-3 ">
@@ -102,14 +134,7 @@
 			    //echo "Prescription: " . $bns . "<br>" . "<br>";
 			    //echo "<a href='patient.php?id=$now[Pat_ID]' class='btn btn-info'>RePrescrip</a>" . "&nbsp";
     			//echo "<a href='addsurgery.php?id=$now[Pat_ID]' class='btn btn-info'>ArrangeOper</a>";
-    			$bns = $con->query("select content from Prescription where Pat_ID= $now[Pat_ID] ")->fetch_object();
-    			if($bns) {
-            			 $bns=$bns->content;
-    					echo "Prescription: " . $bns . "<br>" . "<br>";
-    			}
-				else{
-					echo "Prescription: " . "None" . "<br>" . "<br>";
-				}
+
 				if($_SESSION['usertype'] == 0 || $_SESSION['usertype'] == 2){
 					echo "<a href='Prescription.php?id=$now[Pat_ID]' class='btn btn-info'>RePrescrip</a>" . "&nbsp";
 					echo "<a href='addsurgery.php?id=$now[Pat_ID]' class='btn btn-info'>ArrangeOper</a>" . "<br>" . "<br>";

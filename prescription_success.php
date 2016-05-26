@@ -30,11 +30,18 @@
 		{
 				echo mysqli_connect_error();
 		}
-		$cns = $con->query("select * from Prescription where Pre_ID=$data[Pre_ID]")->fetch_object();
-		if($cns) {
-			$ans = $con->query("delete from Prescription where Pre_ID=$data[Pre_ID]");
-		}
-		$bns = $con->query("insert into Prescription (Pre_ID,Pat_ID,Doc_ID,Pre_date,content) values ($data[Pre_ID],$data[Pat_ID],$data[Doc_ID],$data[Pre_date],$data[content])");
+
+		$sql = "select max(Pre_ID) as id FROM Prescription order by Pre_ID DESC";
+		$ans = $con->query($sql);
+		$now = $ans->fetch_assoc();
+		// echo $sql . "<br>" . $now["id"] . "<br>";
+
+		$next_id = (int)$now["id"] + 1;
+
+		$sql = "insert into Prescription (Pre_ID,Pat_ID,Doc_ID,Pre_date,content,amount) 
+				values ($next_id,$data[Pat_ID],$data[Doc_ID],'$data[Pre_date]','$data[content]', $data[amount])";
+		$bns = $con->query($sql);
+		// echo $sql;
 		//echo $data['content'];
 		if(!$bns){
 			echo "<h1 class='text-center'>Arrange Failed...</h1>";
@@ -47,7 +54,7 @@
 		 onload=function(){
 			 setInterval(go, 1000);
 		 };
-		 var x=2;
+		 var x=1;
 		 function go(){
 			 x--;
 			 if(x>0){
