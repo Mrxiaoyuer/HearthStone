@@ -3,7 +3,7 @@
   onload=function(){
     setInterval(go, 1000);
   };
-  var x=100;
+  var x=1;
   function go(){
     x--;
     if(x>0){

@@ -33,6 +33,46 @@
 </div>
 </div>
 
+<div class = "container">
+
+<div class=" panel panel-info">
+	<div class="panel-heading text-center"><h4>Worker Salary</h4></div>
+	<div class="panel-body">
+		<table class="table table-hover">
+			<tr>
+				<th>Worker ID</th>
+				<th>Name</th>
+				<th>Worker Department</th>
+				<th>Salary</th>
+			</tr>
+			<tbody>
+				<?php
+					$cns = $con->query("select * from Doctor");
+					while ($now = $cns->fetch_assoc()){
+							echo "<tr>";
+							echo "<td> Doctor: " . $now["Work_ID"] . "</td>";
+							echo "<td>" . $now["Name"] . "</td>";
+							echo "<td>" . $now["Work_at"] . "</td>";
+							echo "<td>" . $now["Salary"] . "</td>";
+							echo "</tr>";
+					}
+
+					$cns = $con->query("select * from Worker");
+					while ($now = $cns->fetch_assoc()){
+							echo "<tr>";
+							echo "<td> Worker: " . $now["Worker_ID"] . "</td>";
+							echo "<td>" . $now["Name"] . "</td>";
+							echo "<td>" . $now["Work_Type"] . "</td>";
+							echo "<td>" . $now["Salary"] . "</td>";
+							echo "</tr>";
+					}
+				 ?>
+			</tbody>
+		</table>
+	</div>	
+</div>
+</div>
+
 
 <?php
   require('footer.php');        // 导航栏
