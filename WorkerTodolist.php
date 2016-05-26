@@ -22,7 +22,7 @@
 			echo "<td>" . $now["id"] . "</td>";
 			echo "<td>" . $now["Dev_Name"] . "</td>";
 			echo "<td>" . $now["Descrip"] . "</td>";
-			echo "<td>" ."<a href='rp-report.php?id=$now[Dev_Name]' class='btn btn-info'>Fixed</a>" ."</td>";
+			echo "<td>" ."<a href='rp-report.php?id=$now[Dev_Name]' class='btn btn-info'>ReportFixed</a>" ."</td>";
 			echo "</tr>";
 		}
 	  ?>

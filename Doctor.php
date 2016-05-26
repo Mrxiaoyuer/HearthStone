@@ -53,6 +53,7 @@
         					<th>Work_at</th>
         					<th>Name</th>
         					<th>Salary</th>
+                  <th>Details</th>
         				</tr>
         				<tbody>";
         $bns = $con->query("select * from Doctor");
@@ -62,6 +63,7 @@
   					echo "<td>" . $now["Work_at"] . "</td>";
   					echo "<td>" . $now["Name"] . "</td>";
   					echo "<td>" . $now["Salary"] . "</td>";
+            echo "<td>" . "<a href='Doctor.php?id=$now[Work_ID]' class='btn btn-info'>Details</a>" . "</td>";
   					echo "</tr>";
   			}
       }

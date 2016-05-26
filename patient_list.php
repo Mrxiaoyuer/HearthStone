@@ -2,11 +2,17 @@
   require('header.php');        // 导航栏
 
 ?>
+<br>
+  <h1 class = "text-center"> Patient Information List </h1>
+  <br>
+<div class = "container">
 
-
-<h2 class = "text-center"> Patient Information List </h2>
-<div class = "row">
-    <div class="col-md-offset-2 col-md-8 ">
+  <br><br>
+    <div class='col-md-offset-1 col-md-10 panel panel-info'>
+      <div class='panel-heading'>
+        <div class='text-center'>Patients Lists</div>
+      </div>
+      <div class='panel-body'>
         <table class="table">
             <thead>
             <tr>
@@ -32,7 +38,7 @@
               echo "<td>" . $doc_name["Name"] . "</td>";
 
               //echo "<td>" . "<a href='deal_map.php?id=$pending_username&value=$now[Pat_ID]' class='btn btn-info'>Match</a>" . "</td>";
-              echo "<td><a href = './patient.php?id=" . $now["Pat_ID"] ."'>Details</td>";
+              echo "<td><a href = './patient.php?id=" . $now["Pat_ID"] ."' class='btn btn-info'>Details</td>";
               echo "</tr>";
           }
         ?>
@@ -40,6 +46,7 @@
         </tbody>
         </table>
 	</div>
+</div>
 </div>
 
 

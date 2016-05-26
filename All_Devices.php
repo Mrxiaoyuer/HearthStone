@@ -1,6 +1,6 @@
 
 
-<?php 
+<?php
   require('header.php');        // 导航栏
 ?>
 
@@ -19,7 +19,7 @@
 						<th>State</th>
 						<th>Belong_Room</th>
 						<th>In_Charge</th>
-						<th>ReportToBeRepaired</th>
+						<th>Operation</th>
 	        </tr>
 			</thead>
       <tbody>
@@ -40,7 +40,7 @@
 	              	echo "<td>" . $now["Belong_Room"] . "</td>";
 					echo "<td>" . $now["In_Charge"] . "</td>";
 					if ($now["State"] != 0){
-						echo "<td>" . "<a href='bd-report.php?id=$now[id]' class='btn btn-info'>Break</a>" . "&nbsp"."</td>";
+						echo "<td>" . "<a href='bd-report.php?id=$now[id]' class='btn btn-info'>ReportBroken</a>" . "&nbsp"."</td>";
 					}
 					else{
 						echo "<td>" ."Wait For Repair"."</td>";
@@ -62,6 +62,6 @@
 	</div>
 </div>
 
-<?php 
+<?php
   require('footer.php');        // 底部
-?> 
+?>
