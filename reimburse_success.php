@@ -32,26 +32,36 @@
 				echo mysqli_connect_error();
 		}
 		$amount = $con->query("select Amount from Bills where id=$data[id]")->fetch_object()->Amount;
-		$balance = $con->query("select Card_Balance from Bills where id=$data[id]")->fetch_object()->Card_Balance;
+		$balance = $con->query("select balance from Patient_Card where Pat_ID=$data[Pat_ID]")->fetch_object()->balance;
+		$Card_No = $con->query("select Card_No from Patient_Card where Pat_ID=$data[Pat_ID]")->fetch_object()->Card_No;
 		//echo $amount*$data['Reimburse_Ratio'] . "<br>";
+		
+		// echo "amount = " . $amount . "<br>";
+		// echo "balance = " . $balance . "<br>";
+		// echo "Card_No = " . $Card_No . "<br>";
+		
 		$amount = $amount*$data["Reimburse_Ratio"];
 		$balance = $balance + $amount;
 		//echo "<br />" . $balance;
-		$ans = $con->query("delete from Bills where id=$data[id]");
-		$bns = $con->query("insert into Bills (id,Pat_ID,Amount,Card_Balance,Date) values ($data[id],$data[Pat_ID],$amount,$balance,$data[Date])");
+		$sql = "update MedicareCard SET `balance`= $balance WHERE `Card_No`=$Card_No";
+		// echo $sql;
+
+		$ans = $con->query($sql);
 		//echo $data['id'];
-		if(!$bns){
-			echo "<h1 class='text-center'>Arrange Failed...</h1>";
+		if(!$ans){
+			echo "<h1 class='text-center'>Reimburse Failed...</h1>";
 			echo "<h1 class='text-center'>Please Try Again....</h1>";
 		}else{
-			echo "<h1 class='text-center'>Arrange Successfully...</h1>";
+			$sql = "update Bills SET state = 1 where id=$data[id]";
+			$ans = $con->query($sql);
+			echo "<h1 class='text-center'>Reimburse Successfully...</h1>";
 		}
 	 ?>
 	 <script type="text/javascript">
 		 onload=function(){
 			 setInterval(go, 1000);
 		 };
-		 var x=2;
+		 var x=1;
 		 function go(){
 			 x--;
 			 if(x>0){

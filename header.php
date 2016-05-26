@@ -42,6 +42,7 @@
                       echo '<li><a href="./manager/AssignList.php">AssignList</a></li>';
                       echo '<li><a href="./manager/RecycleList.php">RecycleList</a></li>';
                       echo '<li><a href="./manager/ManageRoom.php">ManageRoom</a></li>';
+                      echo '<li><a href="./finance.php">Finance</a></li>';
                     }
                     elseif ($nowuser["usertype"] == 2){
                       echo '<li><a href="./Patient_list.php">Patient Info</a></li>';

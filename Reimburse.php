@@ -52,10 +52,6 @@
 			<input class="form-control" name="Amount" value=<?php echo $ans->Amount;?> readonly>
 		</div>
 		<div class="form-group">
-			<label>Card_Balance</label>
-			<input class="form-control" name="Card_Balance" value=<?php echo $ans->Card_Balance?> readonly>
-		</div>
-		<div class="form-group">
 			<label>Date</label>
 			<input class="form-control" name="Date" value=<?php echo $ans->Date ?>>
 		</div>
