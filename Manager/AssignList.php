@@ -52,14 +52,15 @@
     				}
     				$bns->close();
     				//$ans = $con->query("select * from Patient natural join Doctor, Department where Work_at = Dep_No and Primary_doc = Work_ID");
-			}
-			echo "</table>";
+    			echo "</table>";
 			echo '<table class="table">';
 			echo "<br><h3 class = 'text-center'>Pending Patient</h3><br><br>";
 			echo "<th>" . "Pat_name" . "<br >". "</th>";
 			echo "<th>" . "Sex" . "<br >". "</th>";
 			echo "<th>" . "Primary_doc" . "<br >". "</th>";
 			echo "<th>" . "Department" . "<br >". "</th>";
+			}
+
 		}
 		$ans->close();
 	  ?>

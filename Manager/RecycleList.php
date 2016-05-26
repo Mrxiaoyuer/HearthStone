@@ -8,6 +8,7 @@
 	  <?php
 		echo "<th>" . "Pat_name" . "<br >". "</th>";
 		echo "<th>" . "Sex" . "<br >". "</th>";
+		echo "<th>" . "Bed_No" . "<br >". "</th>";
 		echo "<th>" . "Primary_doc" . "<br >". "</th>";
 		echo "<th>" . "Department" . "<br >". "</th>";
 		echo "<th>" . "State" . "<br >". "</th>";
@@ -23,6 +24,7 @@
 				echo "<tr>";
 				echo "<td>" . $now["Pat_name"] . "</td>";
 				echo "<td>" . $now["Sex"] . "</td>";
+				echo "<td>" . $now["Bed_No"] . "</td>";
 				echo "<td>" . $now["Primary_doc"] . "</td>";
 				echo "<td>" . $now["Dep_name"] . "</td>";
 				echo "<td>" . "<a href='_RecycleAction.php?id1=$now[Pat_ID]&id2=$now[Bed_No]' class='btn btn-info'>Recycle</a>" . "</td>";
