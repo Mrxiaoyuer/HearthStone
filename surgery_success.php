@@ -32,7 +32,8 @@
 		{
 				echo mysqli_connect_error();
 		}
-		$bns = $con->query("insert into Surgery (OpTime,Doctor_ID,Patient_ID,OpRoom_ID) values ($data[OpTime],$data[Doctor_ID],$data[Patient_ID],$data[OpRoom_ID])");
+		$sql = "insert into Surgery (OpTime,Doctor_ID,Patient_ID,OpRoom_ID) values ('$data[OpTime]',$data[Doctor_ID],$data[Patient_ID],$data[OpRoom_ID])";
+		$bns = $con->query($sql);
 		if(!$bns){
 			echo "<h1 class='text-center'>Arrange Failed...</h1>";
 			echo "<h1 class='text-center'>Please Try Again....</h1>";
@@ -44,11 +45,7 @@
 		 onload=function(){
 			 setInterval(go, 1000);
 		 };
-<<<<<<< HEAD
 		 var x=1;
-=======
-		 var x=2;
->>>>>>> efcf9987f89b0c510baadde6e85fb0bcab6c36df
 		 function go(){
 			 x--;
 			 if(x>0){

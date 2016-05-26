@@ -1,4 +1,4 @@
-<?php 
+<?php
 	session_start();
 	require('./header.php');        // 导航栏
   include_once './login/config.php';
@@ -53,7 +53,36 @@
               else{
                 echo '<td>' . $now["usertypeID"] . '</td>';
               }
-              echo "</tr>"; 
+              echo "</tr>";
+							if($now['usertypeID']!=0){
+								switch ((int)$_SESSION["usertype"]){
+											case 1:
+												$usertype = "Manager";
+												break;
+											case 2:
+												$usertype = "Doctor";
+												$Name = $con->query("select Name from Doctor where Work_ID=$now[usertypeID]")->fetch_object()->Name;
+												$Salary = $con->query("select Salary from Doctor where Work_ID=$now[usertypeID]")->fetch_object()->Salary;
+												echo "Name : " . $Name . "<br>" . "<br>";
+												echo "Salary : " . $Salary . "<br>" . "<br>";
+												break;
+											case 3:
+												$usertype = "Patient";
+												$Card_No = $con->query("select Card_No from Patient where Pat_ID=$now[usertypeID]")->fetch_object()->Card_No;
+												$Name = $con->query("select Pat_name from Patient where Pat_ID=$now[usertypeID]")->fetch_object()->Pat_name;
+												echo "Name : " . $Name . "<br>" . "<br>";
+												echo "Card_No : " . $Card_No . "<br>" . "<br>";
+												$balance = $con->query("select balance from MedicareCard where Card_No=$now[usertypeID]")->fetch_object()->balance;
+												echo "Card_Balance : " . $balance . "<br>" . "<br>";
+												break;
+											case 4:
+												$usertype = "Worker";
+												break;
+											default:
+												$usertype = "GG";
+												break;
+								}
+							}
           }
         ?>
 
@@ -62,14 +91,14 @@
     </div>
     </div>
 
-    
+
 
     <br><br><br>
     <div class = "row text-center">
-      <a href="login/logout.php" class="btn btn-default btn-lg">Logout</a>  
+      <a href="login/logout.php" class="btn btn-default btn-lg">Logout</a>
     </div>
 
 
 <?php
   require('./footer.php');        // 导航栏
-?> 
+?>
