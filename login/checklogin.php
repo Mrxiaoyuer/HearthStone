@@ -24,6 +24,7 @@ $response = $login->checkLogin($tbl_name, $myusername, $mypassword);
 		$_SESSION['username'] = $myusername;
 		$_SESSION['password'] = $mypassword;
 		$_SESSION['usertype'] = $now_user["usertype"];
+		$_SESSION['usertypeID'] = $now_user["usertypeID"];
 		
 	}
 	else {
