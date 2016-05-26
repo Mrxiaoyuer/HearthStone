@@ -1,4 +1,4 @@
-<?php 
+<?php
   require('header.php');        // 导航栏
   $pending_username = $_GET['id'];
 
@@ -12,10 +12,11 @@
             <thead>
             <tr>
                         <th>Worker_ID</th>
+                        <th>Name</th>
                         <th>Work_Type</th>
                         <th>Option</th>
             </tr>
-            <?php 
+            <?php
             	echo "<strong>Pending patient:</strong> " . $pending_username . "<br>";
             ?>
             </thead>
@@ -28,6 +29,7 @@
             while ($ans and $now = $ans->fetch_assoc()){
               echo "<tr>";
               echo "<td>" . $now["Worker_ID"] . "</td>";
+              echo "<td>" . $now["Name"] . "</td>";
               echo "<td>" . $now["Work_Type"] . "</td>";
 
               //echo "<td>" . "<a href='deal_map.php?id=$pending_username&value=$now[Pat_ID]' class='btn btn-info'>Match</a>" . "</td>";
@@ -65,14 +67,14 @@
   		$con->query($sql);
   		echo $sql;
 
-  	header("Location: ./map_user.php"); 
+  	header("Location: ./map_user.php");
 	}
 	if (!empty($_POST['worker_name'])){
 		$sql = "select max(Worker_ID) as id FROM HearthStone.Worker order by Pat_ID DESC";
 		$ans = $con->query($sql);
 		$now = $ans->fetch_assoc();
 		// echo $sql . "<br>" . $now["id"] . "<br>";
-		
+
 		$next_id = (int)$now["id"] + 1;
 
 		$sql = "insert into Patient (`Worker_ID`, `Work_Type`) VALUES ($next_id, '$_POST[work_type]')";
@@ -81,7 +83,7 @@
 		$sql = "update users set usertypeID = $next_id where username = '$_GET[id]'";
   		$con->query($sql);
 
-  	header("Location: ./map_user.php"); 
+  	header("Location: ./map_user.php");
 	}
 
   require('footer.php');        // 导航栏

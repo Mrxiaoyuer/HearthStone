@@ -11,9 +11,8 @@
             <thead>
             <tr>
                         <th>id</th>
-                        <th>username</th>
                         <th>email</th>
-                        <th>mod_timestamp</th>
+                        <th>CreateTime</th>
             </tr>
             <?php
             	//echo "<h4>Pending patient: " . $pending_username . "<br> </h4> <br>";
@@ -21,14 +20,13 @@
             </thead>
         <tbody>
         <?php
-            $sql = "select * from users where usertype=0";
+            $sql = "select * from Manager";
   			    $ans = $con->query($sql);
             while ($ans and $now = $ans->fetch_assoc()){
               echo "<tr>";
               echo "<td>" . $now["id"] . "</td>";
-              echo "<td>" . $now["username"] . "</td>";
               echo "<td>" . $now["email"] . "</td>";
-              echo "<td>" . $now["mod_timestamp"] . "</td>";
+              echo "<td>" . $now["CreatTime"] . "</td>";
               //echo "<td>" . "<a href='deal_map.php?id=$pending_username&value=$now[Pat_ID]' class='btn btn-info'>Match</a>" . "</td>";
               echo "<td>" . '<form action="" method="post">
     						<input type="hidden" name="click" value="' . $now["id"] . '"/>
@@ -44,17 +42,17 @@
 </div>
 
 <div>
-	<h2 class = "text-center"> No Match? Create a new Patient!</h2>
+	<h2 class = "text-center"> No Match? Create a new Manager!</h2>
 
 	<form class="form-signup" id="newpatient" name="newpatient" method="post" action="">
-        <input name="pat_name" id="pat_name" type="text" class="form-control" placeholder="Patient Name" autofocus>
+        <input name="pat_name" id="pat_name" type="text" class="form-control" placeholder="Manager Name" autofocus>
         <br>
         Male: <input type="radio" checked="checked" name="Sex" value="M" />
         Female: <input type="radio" name="Sex" value="F" />
         <br><br>
-        <input name="primary_doc" id="primary_doc" type="text" class="form-control" placeholder="Primary Doctor ID">
+        <input name="primary_doc" id="primary_doc" type="text" class="form-control" placeholder="Email">
         <br>
-		<button name="Submit" id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Create Patient And Match</button>
+		<button name="Submit" id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Create Manager And Match</button>
 	</form>
 
 </div>
@@ -65,7 +63,7 @@
 		$sql = "update users set usertypeID = $_POST[click] where username = '$_GET[id]'";
   	$con->query($sql);
   		//echo $sql;
-    header("Location: ./map_user.php"); 
+    header("Location: ./map_user.php");
 	}
 	if (!empty($_POST['pat_name'])){
 		$sql = "select max(Pat_ID) as id FROM HearthStone.Patient order by Pat_ID DESC";
@@ -81,7 +79,7 @@
 		$sql = "update users set usertypeID = $next_id where username = '$_GET[id]'";
   		$con->query($sql);
 
-  	header("Location: ./map_user.php"); 
+  	header("Location: ./map_user.php");
 	}
 
   require('footer.php');        // 导航栏
