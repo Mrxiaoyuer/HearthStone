@@ -42,7 +42,7 @@
         echo "<div id='container'>
         	<br>
         	<br>
-        	<div class='col-md-offset-2 col-md-7 panel panel-info'>
+        	<div class='col-md-offset-2 col-md-8 panel panel-info'>
         		<div class='panel-heading'>
         			<div class='text-center'>Doctor Lists</div>
         		</div>
@@ -84,7 +84,6 @@
         $ans = $con->query("select * from Doctor where Work_ID=".$_GET['id']."");
 	      while ($now = $ans->fetch_assoc()){
 	        echo "Work_ID : " . $now["Work_ID"] . "<br>". "<br>";
-					echo "Salary : " . $now["Salary"] . "<br>". "<br>";
 					echo "Work_at : Department-" . $now["Work_at"] . "<br>". "<br>";
 					echo "Name : " . $now["Name"] . "<br>". "<br>";
 	       }

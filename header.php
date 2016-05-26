@@ -31,6 +31,9 @@
            <div class = "col-md-10 row">
               <ul class="nav navbar-nav col-md-11">
                  <?php
+                  if($nowuser["usertypeID"]==0){
+                      //echo "<h3 class='text-center'>Please wait for Authentication!</h3>";
+                  }else{
                     if ($nowuser["usertype"] == 0){
                     echo '<li><a href="./Patient_list.php">Patient Info</a></li>
                       <li><a href="./Doctor.php">Doctor Info</a></li>
@@ -57,6 +60,7 @@
                     else{
                       echo '<li>Error Code</li>';
                     }
+                  }
                  ?>
 
 
