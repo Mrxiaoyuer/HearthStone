@@ -8,6 +8,7 @@
 		echo "<th>" . "Pat_name" . "<br >". "</th>";
 		echo "<th>" . "Sex" . "<br >". "</th>";
 		echo "<th>" . "Primary_doc" . "<br >". "</th>";
+		echo "<th>" . "Bed number" . "<br >" . "</th>";
 		echo "<th>" . "Department" . "<br >". "</th>";
 		echo "<th>" . "State" . "<br >". "</th>";
 	  $con = new mysqli("57306aae8f8cf.bj.cdb.myqcloud.com:5651", "cdb_outerroot", "jiangli77", "HearthStone");
@@ -24,6 +25,7 @@
 				echo "<td>" . $now["Pat_name"] . "</td>";
 				echo "<td>" . $now["Sex"] . "</td>";
 				echo "<td>" . $now["Primary_doc"] . "</td>";
+				echo "<td>" . $now["Bed_No"] . "</td>";
 				echo "<td>" . $now["Dep_name"] . "</td>";
 
 				$bns = $con->query("select * from Bed natural join Room, Department where Dep_No = Belong_dep and Dep_No = $Dep_No and Is_used = 0;");
