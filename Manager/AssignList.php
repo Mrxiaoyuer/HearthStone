@@ -46,7 +46,7 @@
         				echo "<td>" . $room["Belong_room"] . "</td>";
         				echo "<td>" . $room["inroom_id"] . "</td>";
         				echo "<td>" . $room["Dep_name"]. "</td>";
-        				echo "<td>" . "<a href='_AssignAction.php?id1=$room[Bed_No]&id2=$Pat_id' class='btn btn-info'>Assign</a>" . "</td>";
+        				echo "<td>" . "<a href='_AssignAction.php?id1=$room[Bed_No]&id2=$Pat_ID' class='btn btn-info'>Assign</a>" . "</td>";
         				echo "</tr>";
     					
     				}
