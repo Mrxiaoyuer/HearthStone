@@ -17,7 +17,10 @@
 	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<!--<link rel="stylesheet" href="css/style.css" type="text/css">-->
 </head>
-
+<?php
+  if (!session_id()) session_start();
+  ob_start();
+?>
 <body>
 
 <div id="container">
@@ -31,11 +34,11 @@
 	  </div>
 	  <div class="form-group">
 	    <label>Doctor_ID</label>
-	    <input class="form-control" name="Doctor_ID" placeholder="Doctor_ID">
+	    <input class="form-control" name="Doctor_ID" value=<?php if($_SESSION["usertypeID"] && $_SESSION["usertype"] == 2) {echo $_SESSION["usertypeID"];} else {echo "none";}?> readonly>
 	  </div>
 		<div class="form-group">
 			<label>Patient_ID</label>
-			<input class="form-control" name="Patient_ID" placeholder="Patient_ID">
+			<input class="form-control" name="Patient_ID" value=<?php if($_GET["id"]) {echo $_GET["id"];} else {echo "none";};?> readonly>
 		</div>
 		<div class="form-group">
 			<label>OpRoom_ID</label>

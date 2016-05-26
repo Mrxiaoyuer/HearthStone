@@ -35,8 +35,9 @@
 								echo "<td>" . $now["OpTime"] . "</td>";
 								echo "<td>" . $now["Doctor_ID"] . "</td>";
 								echo "<td>" . $now["OpRoom_ID"] . "</td>";
-								echo "<td>" .  "<a href='cancelSurgery.php?id=$now[id]' class='btn btn-info'>Cancel</a>" . "</td>";
-								echo "</tr>";
+								if($_SESSION["usertypeID"] == $now["Doctor_ID"]) echo "<td>" .  "<a href='cancelSurgery.php?id=$now[id]' class='btn btn-info'>Cancel</a>" . "</td>";
+                else echo "<td>None</td>";
+                echo "</tr>";
 						}
 					 ?>
 				</tbody>
@@ -115,9 +116,6 @@
 			if(mysqli_connect_errno()){
 					echo mysqli_connect_error();
 			}
-
-
-
 			$ans = $con->query("select * from Patient where Pat_ID=".$_GET['id']."");
 
 	    while ($now = $ans->fetch_assoc()){
