@@ -23,7 +23,7 @@
 		while($now = $ans->fetch_assoc()){
 			if($now["Assigned"] == 0)
 			{
-				$Dep_No = $now["Dep_No"];
+				$Dep_No = 1;
 				$Pat_id = $now["Pat_ID"];
 				$Assigned = $now["Assigned"]; 
 				echo "<tr>";
@@ -34,28 +34,8 @@
 				echo "<tr>";
 			}
 		}
-		echo "</table>";
-		echo '<table class="table">';
-		echo "<br><h3 class = 'text-center'>Empty Room List</h3><br><br>";
-		echo "<th>" . "Room_Num" . "<br >". "</th>";
-		echo "<th>" . "Bed_Num" . "<br >". "</th>";
-		echo "<th>" . "Department" . "<br >". "</th>";
-		echo "<th>" . "Opreation" . "<br >". "</th>";
-		if($Dep_No)
-		{
-			$bns = $con->query("select * from Bed natural join Room, Department where Dep_No = Belong_dep and Dep_No = $Dep_No and Is_used = 0;");
-			if($Assigned == 0){
-				while ($room = $bns->fetch_assoc()){
-        			echo "<tr>";
-        			echo "<td>" . $room["Belong_room"] . "</td>";
-        			echo "<td>" . $room["inroom_id"] . "</td>";
-        			echo "<td>" . $room["Dep_name"]. "</td>";
-        			echo "<td>" . "<a href='_AssignAction.php?id1=$room[Bed_No]&id2=$Pat_id' class='btn btn-info'>Assign</a>" . "</td>";
-        			echo "</tr>";
-    				$bns->close();
-    			}
-			}
-	    }
+			
+		
 		$ans->close();
 	  ?>
 	</table>

@@ -136,18 +136,11 @@
   				if($_SESSION['usertype'] == 0 || $_SESSION['usertype'] == 2){
   					echo "<a href='Prescription.php?id=$now[Pat_ID]' class='btn btn-info'>RePrescrip</a>" . "&nbsp";
   					echo "<a href='addsurgery.php?id=$now[Pat_ID]' class='btn btn-info'>ArrangeOper</a>" . "<br>" . "<br>";
-  				}
-
-	        if($_SESSION['usertype'] == 0 || $_SESSION['usertype'] == 1){
-		        if($now["Assigned"] == -1){
+  					if($now["Assigned"] == -1){
 							echo "<a href = '_SendAssignRoomReq.php?id=$now[Pat_ID]' class='btn btn-info'> Assign Room</a>";
-		        }
-		    		elseif($now["Assigned"] != 0 && $now["Assigned"] != -1)
-	    			{
-	    				echo "<a href = '_SendRecycleRoomReq.php?id=$now[Pat_ID]' class='btn btn-info'>Recycle Room</a>";
-	    			}
-	    		}
-    	  }
+		        	}
+  				}
+  			}
 	    ?>
 		</div>
 		</div>
