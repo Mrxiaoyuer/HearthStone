@@ -46,7 +46,7 @@
 			echo mysqli_connect_error();
 	}
 
-  $bns = $con->query("update All_Devices set state=1 where id=".$_GET['id']."");
+  	$bns = $con->query("update All_Devices set state=1 where Dev_Name='".$_GET['id']."'");
 
   ?>
 </div>

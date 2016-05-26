@@ -1,46 +1,39 @@
-<?php 
+<?php
   require('header.php');        // 导航栏
   $pending_username = $_GET['id'];
 ?>
 
-<h2 class = "text-center"> Manager List </h2>
+<br><h2 class = "text-center"> Manager List </h2><br>
 <div class = "row">
     <div class="col-md-offset-2 col-md-8">
         <table class="table">
 
             <thead>
             <tr>
-                        <th>Pat_ID</th>
-                        <th>Pat_name</th>
-                        <th>Sex</th>
-                        <th>Bed_No</th>
-                        <th>Primary_doc</th>
-                        <th>Option</th>
+                        <th>id</th>
+                        <th>username</th>
+                        <th>email</th>
+                        <th>mod_timestamp</th>
             </tr>
-            <?php 
-            	echo "<strong>Pending patient:</strong> " . $pending_username . "<br>";
+            <?php
+            	//echo "<h4>Pending patient: " . $pending_username . "<br> </h4> <br>";
             ?>
             </thead>
         <tbody>
         <?php
-            $sql = "select * from Patient";
-  			$ans = $con->query($sql);
-
-
+            $sql = "select * from users where usertype=0";
+  			    $ans = $con->query($sql);
             while ($ans and $now = $ans->fetch_assoc()){
               echo "<tr>";
-              echo "<td>" . $now["Pat_ID"] . "</td>";
-              echo "<td>" . $now["Pat_name"] . "</td>";
-              echo "<td>" . $now["Sex"] . "</td>";
-              echo "<td>" . $now["Bed_No"] . "</td>";
-              echo "<td>" . $now["Primary_doc"] . "</td>";
-
+              echo "<td>" . $now["id"] . "</td>";
+              echo "<td>" . $now["username"] . "</td>";
+              echo "<td>" . $now["email"] . "</td>";
+              echo "<td>" . $now["mod_timestamp"] . "</td>";
               //echo "<td>" . "<a href='deal_map.php?id=$pending_username&value=$now[Pat_ID]' class='btn btn-info'>Match</a>" . "</td>";
-              $sss = 1;
               echo "<td>" . '<form action="" method="post">
-						<input type="hidden" name="click" value="' . $now["Pat_ID"] . '"/>
-						<input type="submit" name="button" value="Match" class="btn btn-info"/>
-						</form>' . "</td>";
+    						<input type="hidden" name="click" value="' . $now["id"] . '"/>
+    						<input type="submit" name="button" value="Match" class="btn btn-info"/>
+    						</form>' . "</td>";
               echo "</tr>";
           }
         ?>
@@ -70,21 +63,16 @@
 <?php
 	if (!empty($_POST['click'])){
 		$sql = "update users set usertypeID = $_POST[click] where username = '$_GET[id]'";
-  		$con->query($sql);
-  		echo $sql;
-
-  		$url = "map_user.php";  
-		echo "< script language='javascript' 
-		type='text/javascript'>";  
-		echo "window.location.href='$url'";  
-		echo "< /script>"; 
+  	$con->query($sql);
+  		//echo $sql;
+    header("Location: ./map_user.php"); 
 	}
 	if (!empty($_POST['pat_name'])){
 		$sql = "select max(Pat_ID) as id FROM HearthStone.Patient order by Pat_ID DESC";
 		$ans = $con->query($sql);
 		$now = $ans->fetch_assoc();
 		// echo $sql . "<br>" . $now["id"] . "<br>";
-		
+
 		$next_id = (int)$now["id"] + 1;
 
 		$sql = "insert into Patient (`Pat_ID`, `Pat_name`, `Sex`, `Primary_doc`) VALUES ($next_id, '$_POST[pat_name]', '$_POST[Sex]', $_POST[primary_doc])";
@@ -93,11 +81,7 @@
 		$sql = "update users set usertypeID = $next_id where username = '$_GET[id]'";
   		$con->query($sql);
 
-  		$url = "map_user.php";  
-		echo "< script language='javascript' 
-		type='text/javascript'>";  
-		echo "window.location.href='$url'";  
-		echo "< /script>";  
+  	header("Location: ./map_user.php"); 
 	}
 
   require('footer.php');        // 导航栏

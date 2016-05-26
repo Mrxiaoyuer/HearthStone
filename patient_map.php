@@ -1,9 +1,6 @@
-<?php 
+<?php
   require('header.php');        // 导航栏
   $pending_username = $_GET['id'];
-
-
-
 
 ?>
 
@@ -21,16 +18,14 @@
                         <th>Primary_doc</th>
                         <th>Option</th>
             </tr>
-            <?php 
+            <?php
             	echo "<strong>Pending patient:</strong> " . $pending_username . "<br>";
             ?>
             </thead>
         <tbody>
         <?php
             $sql = "select * from Patient";
-  			$ans = $con->query($sql);
-
-
+  			    $ans = $con->query($sql);
             while ($ans and $now = $ans->fetch_assoc()){
               echo "<tr>";
               echo "<td>" . $now["Pat_ID"] . "</td>";
@@ -77,18 +72,14 @@
   		$con->query($sql);
   		echo $sql;
 
-  		$url = "map_user.php";  
-		echo "< script language='javascript' 
-		type='text/javascript'>";  
-		echo "window.location.href='$url'";  
-		echo "< /script>"; 
+    header("Location: ./map_user.php"); 
 	}
 	if (!empty($_POST['pat_name'])){
 		$sql = "select max(Pat_ID) as id FROM HearthStone.Patient order by Pat_ID DESC";
 		$ans = $con->query($sql);
 		$now = $ans->fetch_assoc();
 		// echo $sql . "<br>" . $now["id"] . "<br>";
-		
+
 		$next_id = (int)$now["id"] + 1;
 
 		$sql = "insert into Patient (`Pat_ID`, `Pat_name`, `Sex`, `Primary_doc`) VALUES ($next_id, '$_POST[pat_name]', '$_POST[Sex]', $_POST[primary_doc])";
@@ -97,11 +88,7 @@
 		$sql = "update users set usertypeID = $next_id where username = '$_GET[id]'";
   		$con->query($sql);
 
-  		$url = "map_user.php";  
-		echo "< script language='javascript' 
-		type='text/javascript'>";  
-		echo "window.location.href='$url'";  
-		echo "< /script>";  
+    header("Location: ./map_user.php"); 
 	}
 
   require('footer.php');        // 导航栏

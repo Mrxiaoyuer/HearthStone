@@ -1,4 +1,4 @@
-<?php 
+<?php
   require('header.php');        // 导航栏
 ?>
 
@@ -28,7 +28,7 @@
               echo "<td>" . $now["usertype"] . "</td>";
               echo "<td>" . $now["mod_timestamp"] . "</td>";
               if ($now['usertypeID'] == 0){
-        echo "<td>" . "<a href='manager_map.php?id=$now[username]' class='btn btn-info'>Map</a>" . "</td>";
+                echo "<td>" . "<a href='manager_map.php?id=$now[username]' class='btn btn-info'>Map</a>" . "</td>";
               }
               else{
                 echo "<td>" . $now['usertypeID'] . "</td>";
@@ -74,7 +74,7 @@
               echo "<td>" . $now["usertype"] . "</td>";
               echo "<td>" . $now["mod_timestamp"] . "</td>";
               if ($now['usertypeID'] == 0){
-				echo "<td>" . "<a href='patient_map.php?id=$now[username]' class='btn btn-info'>Map</a>" . "</td>";
+				            echo "<td>" . "<a href='patient_map.php?id=$now[username]' class='btn btn-info'>Map</a>" . "</td>";
               }
               else{
               	echo "<td>" . $now['usertypeID'] . "</td>";
@@ -114,7 +114,7 @@
               echo "<td>" . $now["usertype"] . "</td>";
               echo "<td>" . $now["mod_timestamp"] . "</td>";
               if ($now['usertypeID'] == 0){
-        echo "<td>" . "<a href='doctor_map.php?id=$now[username]' class='btn btn-info'>Map</a>" . "</td>";
+                echo "<td>" . "<a href='doctor_map.php?id=$now[username]' class='btn btn-info'>Map</a>" . "</td>";
               }
               else{
                 echo "<td>" . $now['usertypeID'] . "</td>";
@@ -155,7 +155,7 @@
               echo "<td>" . $now["usertype"] . "</td>";
               echo "<td>" . $now["mod_timestamp"] . "</td>";
               if ($now['usertypeID'] == 0){
-        echo "<td>" . "<a href='worker_map.php?id=$now[username]' class='btn btn-info'>Map</a>" . "</td>";
+                echo "<td>" . "<a href='worker_map.php?id=$now[username]' class='btn btn-info'>Map</a>" . "</td>";
               }
               else{
                 echo "<td>" . $now['usertypeID'] . "</td>";

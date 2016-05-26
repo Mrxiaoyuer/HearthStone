@@ -31,21 +31,15 @@
 		{
 				echo mysqli_connect_error();
 		}
-<<<<<<< HEAD
 		$amount = $con->query("select Amount from Bills where id=$data[id]")->fetch_object()->Amount;
 		$balance = $con->query("select Card_Balance from Bills where id=$data[id]")->fetch_object()->Card_Balance;
-		echo $amount*$data['Reimburse_Ratio'] . "<br>";
+		//echo $amount*$data['Reimburse_Ratio'] . "<br>";
 		$amount = $amount*$data["Reimburse_Ratio"];
 		$balance = $balance + $amount;
-		echo "<br />" . $balance;
+		//echo "<br />" . $balance;
 		$ans = $con->query("delete from Bills where id=$data[id]");
 		$bns = $con->query("insert into Bills (id,Pat_ID,Amount,Card_Balance,Date) values ($data[id],$data[Pat_ID],$amount,$balance,$data[Date])");
 		//echo $data['id'];
-=======
-		$ans = $con->query("delete from Bills where id=$data[id]");
-		$bns = $con->query("insert into Bills (id,Pat_ID,Amount,Card_Balance,Date) values ($data[id],$data[Pat_ID],$data[Amount],$data[Card_Balance],$data[Date])");
-		echo $data['id'];
->>>>>>> efcf9987f89b0c510baadde6e85fb0bcab6c36df
 		if(!$bns){
 			echo "<h1 class='text-center'>Arrange Failed...</h1>";
 			echo "<h1 class='text-center'>Please Try Again....</h1>";
@@ -64,11 +58,7 @@
 				 document.getElementById("sp").innerHTML=x;
 			 }else{
 				 <?php
-<<<<<<< HEAD
 				 	echo "location.href='patient.php?id=$data[Pat_ID]'";
-=======
-				 echo "location.href='patient.php?id=$data[Pat_ID]'";
->>>>>>> efcf9987f89b0c510baadde6e85fb0bcab6c36df
 				 ?>
 			 }
 		 }
