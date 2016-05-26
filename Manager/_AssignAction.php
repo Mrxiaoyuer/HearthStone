@@ -46,7 +46,9 @@
 			echo mysqli_connect_error();
 	}
 
-  $bns = $con->query("update Bed set Is_used = 1 where Bed_No=".$_GET['id']."");
+  $bns = $con->query("update Patient set Bed_No = ".$_GET['id1'] ." where Pat_ID = " . $_GET['id2']. "");
+  $bns = $con->query("update Patient set Assigned = 1 where Pat_ID = " . $_GET['id2']. "");
+  $bns = $con->query("update Bed set Is_used = 1 where Bed_No=".$_GET['id1']."");
 
   ?>
 </div>

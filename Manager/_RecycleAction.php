@@ -44,14 +44,12 @@
 	{
 			echo mysqli_connect_error();
 	}
-	$Pat_ID = $_GET['id'];
-	$bns = $con->query("select * from Bed natural join Patient where Bed.Bed_No = Patient.Bed_No and Pat_ID = $Pat_ID;");
-
-	$now = $bns->fetch_assoc();
-	$Bed_No = $now["Bed_No"];
+	$Pat_ID = $_GET['id1'];
+	$Bed_No = $_GET['id2'];
 	
-	$bns = $con->query("update Patient set Bed_No = 1 where Pat_ID=".$Pat_ID."");
-	$bns = $con->query("update Bed set Is_used = 0 where Bed_No = $Bed_No");
+	$bns = $con->query("update Patient set Bed_No = NULL where Pat_ID=".$Pat_ID."");
+	$bns = $con->query("update Patient set Assigned = -1 where Pat_ID=".$Pat_ID."");
+	$bns = $con->query("update Bed set Is_used = 0 where Bed_No = ".$Bed_No);
   ?>
 </div>
 

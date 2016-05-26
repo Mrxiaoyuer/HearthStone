@@ -24,20 +24,28 @@
   onload=function(){
     setInterval(go, 1000);
   };
+  function GetQueryString(name)
+	{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
+	}
   var x=2;
+  var id = GetQueryString("id");
   function go(){
     x--;
     if(x>0){
       document.getElementById("sp").innerHTML=x;
     }else{
-      location.href='Patient.php';
+      location.href= 'Patient.php?id='+id; 
     }
   }
 </script>
 
+
 <div id="container">
   <br /><br /><br /><br />
-	<h1 class="text-center">BreakDown Report Successfully...</h1>
+	<h1 class="text-center">Send Request Successfully...</h1>
   <h1 class="text-center">Please wait for a second...</h1>
   <?php
 	$con = new mysqli("57306aae8f8cf.bj.cdb.myqcloud.com:5651", "cdb_outerroot", "jiangli77", "HearthStone");
@@ -46,7 +54,7 @@
 			echo mysqli_connect_error();
 	}
 
-  $bns = $con->query("update Patent set Assigned = 0 where Pat_ID=".$_GET['id']."");
+  $bns = $con->query("update Patient set Assigned = 0 where Pat_ID=".$_GET['id']."");
 
   ?>
 </div>
