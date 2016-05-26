@@ -18,14 +18,14 @@
 		}
 		$ans = $con->query("select * from Patient natural join Doctor, Department where Work_at = Dep_No and Primary_doc = Work_ID");
 		while($now = $ans->fetch_assoc()){
-			if($now["Assigned"] == -1 && $now["Bed_No"] != 0)
+			if($now["Assigned"] == 1)
 			{
 				echo "<tr>";
 				echo "<td>" . $now["Pat_name"] . "</td>";
 				echo "<td>" . $now["Sex"] . "</td>";
 				echo "<td>" . $now["Primary_doc"] . "</td>";
 				echo "<td>" . $now["Dep_name"] . "</td>";
-				echo "<td>" . "<a href='_RecycleAction.php?id=$now[Pat_ID]' class='btn btn-info'>Recycle</a>" . "</td>";
+				echo "<td>" . "<a href='_RecycleAction.php?id1=$now[Pat_ID]&id2=$now[Bed_No]' class='btn btn-info'>Recycle</a>" . "</td>";
 			}
 			
 		}
