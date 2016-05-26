@@ -35,7 +35,7 @@
 								echo "<td>" . $now["OpTime"] . "</td>";
 								echo "<td>" . $now["Doctor_ID"] . "</td>";
 								echo "<td>" . $now["OpRoom_ID"] . "</td>";
-								if($_SESSION["usertypeID"] == $now["Doctor_ID"]) echo "<td>" .  "<a href='cancelSurgery.php?id=$now[id]' class='btn btn-info'>Cancel</a>" . "</td>";
+								if($_SESSION["usertypeID"] == $now["Doctor_ID"] && $_SESSION["usertype"] == 2) echo "<td>" .  "<a href='cancelSurgery.php?id=$now[id]' class='btn btn-info'>Cancel</a>" . "</td>";
                 else echo "<td>None</td>";
                 echo "</tr>";
 						}

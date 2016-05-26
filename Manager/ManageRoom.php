@@ -20,12 +20,12 @@
 
 
 <body>
-    <?php 
+    <?php
   require('ManageHeader.php');        // 导航栏
 ?>
 
 
-<div id="container">   
+<div id="container">
 <div class="col-md-offset-2 col-md-8">
     <table class="table">
     <h2 class = "text-center">Room List</h2>
@@ -35,14 +35,13 @@
                 <th>Bed_id</th>
                 <th>Belong_Dep</th>
                 <th>State</th>
-                <th>Operation</th>
             </tr>
         </thead>
         <tbody>
             <?php
             $con = new mysqli("57306aae8f8cf.bj.cdb.myqcloud.com:5651", "cdb_outerroot", "jiangli77", "HearthStone");
             $ans = $con->query("select * from Bed natural join Room, Department where Belong_dep = Dep_No and Belong_room = Room_No");
-            
+
             while ($room = $ans->fetch_assoc()){
                 echo "<tr>";
                 echo "<td>" . $room["Belong_room"] . "</td>";
@@ -52,12 +51,10 @@
                 if($room["Is_used"] == 0)
                 {
                     echo "<td>" . "Empty" . "</td>";
-                    echo "<td>" . "<a href='assign_action.php?id=$room[Bed_No]' class='btn btn-info'>Assign</a>" ."</td>";
                 }
                 else
                 {
                     echo "<td>" . "Occupy". "</td>";
-                    echo "<td>" . "Assigned" . "</td>";
                 }
                 echo "</tr>";
             }
@@ -74,6 +71,6 @@
     </table>
 </div>
 </div>
-    
+
 </body>
 </html>

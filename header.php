@@ -40,7 +40,7 @@
                       <li><a href="./WorkerTodolist.php">Worker ToDo</a></li>
                       <li><a href="./All_Devices.php">Devices Info</a></li>
                       <li><a href="./map_user.php">Map User</a></li>
-                      <li><a href="./finance.php">Finance</a></li>';  
+                      <li><a href="./finance.php">Finance</a></li>';
                     }
                     elseif ($nowuser["usertype"] == 1){
                       echo '<li><a href="./manager/AssignList.php">AssignList</a></li>';
