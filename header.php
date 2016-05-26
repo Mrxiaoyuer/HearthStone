@@ -1,5 +1,6 @@
 <?php
   if (!session_id()) session_start();
+  ob_start();
 
   include_once './login/config.php';
   $con = new mysqli($host, $username, $password, $db_name);
@@ -14,7 +15,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Login</title>
+    <title>HearthStone</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet" media="screen">
@@ -31,7 +32,7 @@
               <ul class="nav navbar-nav col-md-11">
                  <?php
                     if ($nowuser["usertype"] == 0){
-                    echo '<li><a href="./Patient.php">Patient Info</a></li>
+                    echo '<li><a href="./Patient_list.php">Patient Info</a></li>
                       <li><a href="./Doctor.php">Doctor Info</a></li>
                       <li><a href="./WorkerTodolist.php">Worker ToDo</a></li>
                       <li><a href="./All_Devices.php">Devices Info</a></li>
@@ -50,6 +51,7 @@
                     }
                     elseif ($nowuser["usertype"] == 4){
                       echo '<li><a href="./WorkerTodolist.php">Worker Info</a></li>';
+                      echo '<li><a href="./All_Devices.php">Devices list</a></li>';
                     }
                     else{
                       echo '<li>Error Code</li>';

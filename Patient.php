@@ -6,6 +6,11 @@
 <br>
 <h1 class="text-center"> Patient's Information List</h1>
 <br>
+<?php
+	if (empty($_GET["id"]) && $_SESSION["usertype"] == 3){
+		echo "<h3 class = 'text-center'>You have not been verified,Please wait for the superuser's verification </h3>";
+	}
+?>
 
 <div id="container">
 	<br>
@@ -72,7 +77,7 @@
 
 	<div class="col-md-offset-1 col-md-3 ">
 		<div class="panel panel-info">
-		<div class="panel-heading"><h4 class = "text-center">My Information</div>
+		<div class="panel-heading"><h4 class = "text-center">Patient Information</div>
 		<div class="panel-body">
 	    <?php
 
@@ -81,14 +86,17 @@
 					echo mysqli_connect_error();
 			}
 
-	    $ans = $con->query("select * from Patient where Pat_ID=".$_GET['id']."");
+	    
 
+			$ans = $con->query("select * from Patient where Pat_ID=".$_GET['id']."");
+	    		
 	    while ($now = $ans->fetch_assoc()){
-	        echo "Pat_ID : " . $now["Pat_ID"] . "<br>". "<br>";
+	    		$doc_name = $con->query("select Name from Doctor where Work_ID=".$now["Primary_doc"]."")->fetch_assoc();
+	        	echo "Pat_ID : " . $now["Pat_ID"] . "<br>". "<br>";
 			    echo "Pat_name : " . $now["Pat_name"] . "<br>". "<br>";
 			    echo "Sex : " . $now["Sex"] . "<br>". "<br>";
 			    echo "Bed_No : " . $now["Bed_No"] . "<br>". "<br>";
-			    echo "Primary_doc : " . $now["Primary_doc"] . "<br>". "<br>";
+			    echo "Primary_doc : " . $doc_name["Name"]. "<br>". "<br>";
 			    $bns = $con->query("select content from Prescription where Pat_ID= $now[Primary_doc] and Doc_ID=$now[Pat_ID]")->fetch_object();
           if($bns) $bns=$bns->content;
 			    //echo "Prescription: " . $bns . "<br>" . "<br>";
@@ -96,20 +104,26 @@
     			//echo "<a href='addsurgery.php?id=$now[Pat_ID]' class='btn btn-info'>ArrangeOper</a>";
     			$bns = $con->query("select content from Prescription where Pat_ID= $now[Pat_ID] ")->fetch_object();
     			if($bns) {
-             $bns=$bns->content;
+            			 $bns=$bns->content;
     					echo "Prescription: " . $bns . "<br>" . "<br>";
     			}
-					else{
-						echo "Prescription: " . "None" . "<br>" . "<br>";
-					}
+				else{
+					echo "Prescription: " . "None" . "<br>" . "<br>";
+				}
+				if($_SESSION['usertype'] == 0 || $_SESSION['usertype'] == 2){
 					echo "<a href='Prescription.php?id=$now[Pat_ID]' class='btn btn-info'>RePrescrip</a>" . "&nbsp";
 					echo "<a href='addsurgery.php?id=$now[Pat_ID]' class='btn btn-info'>ArrangeOper</a>" . "<br>" . "<br>";
-          if($now["Assigned"] == -1)
-    				echo "<a href = '_SendAssignRoomReq.php?id=$now[Pat_ID]' class='btn btn-info'> Assign Room</a>";
-    			elseif($now["Assigned"] != 0 && $now["Assigned"] != -1)
-    			{
-    				echo "<a href = '_SendRecycleRoomReq.php?id=$now[Pat_ID]' class='btn btn-info'>Recycle Room</a>";
-    			}
+				}
+
+	          	if($_SESSION['usertype'] == 0 || $_SESSION['usertype'] == 1){
+		          	if($now["Assigned"] == -1){
+							echo "<a href = '_SendAssignRoomReq.php?id=$now[Pat_ID]' class='btn btn-info'> Assign Room</a>";
+		          	}
+		    		elseif($now["Assigned"] != 0 && $now["Assigned"] != -1)
+	    			{
+	    				echo "<a href = '_SendRecycleRoomReq.php?id=$now[Pat_ID]' class='btn btn-info'>Recycle Room</a>";
+	    			}
+	    		}
     	  }
 	    ?>
 		</div>

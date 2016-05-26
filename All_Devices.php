@@ -19,7 +19,7 @@
 						<th>State</th>
 						<th>Belong_Room</th>
 						<th>In_Charge</th>
-						<th>Option</th>
+						<th>ReportToBeRepaired</th>
 	        </tr>
 			</thead>
       <tbody>
@@ -33,15 +33,20 @@
           $ans = $con->query("select * from All_Devices");
 
           while ($now = $ans->fetch_assoc()){
-              echo "<tr>";
-              echo "<td>" . $now["id"] . "</td>";
-              echo "<td>" . $now["Dev_Name"] . "</td>";
-              echo "<td>" . $now["State"] . "</td>";
-              echo "<td>" . $now["Belong_Room"] . "</td>";
-							echo "<td>" . $now["In_Charge"] . "</td>";
-							echo "<td>" . "<a href='bd-report.php?id=$now[id]' class='btn btn-info'>Break</a>" . "&nbsp";
-							echo "<a href='rp-report.php?id=$now[id]' class='btn btn-info'>Fixed</a>" ."</td>";
-              echo "</tr>";
+              	echo "<tr>";
+	              	echo "<td>" . $now["id"] . "</td>";
+	              	echo "<td>" . $now["Dev_Name"] . "</td>";
+	              	echo "<td>" . $now["State"] . "</td>";
+	              	echo "<td>" . $now["Belong_Room"] . "</td>";
+					echo "<td>" . $now["In_Charge"] . "</td>";
+					if ($now["State"] != 0){
+						echo "<td>" . "<a href='bd-report.php?id=$now[id]' class='btn btn-info'>Break</a>" . "&nbsp"."</td>";
+					}
+					else{
+						echo "<td>" ."Wait For Repair"."</td>";
+					}
+					// echo "<a href='rp-report.php?id=$now[id]' class='btn btn-info'>Fixed</a>" ."</td>";
+              	echo "</tr>";
           }
           $ans->close();
           ?>
